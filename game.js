@@ -1,93 +1,132 @@
 enchant();
 
+var world = new enchant.box2d.PhysicsWorld(0, 20);
+
 window.onload = function() {
     var game = new Game(800, 600);
     game.fps = 30;
-    game.preload('heart.png');
+    game.preload('head.png','torso.png','left_arm.png','right_arm.png','left_forearm.png','right_forearm.png',
+                 'left_thigh.png','right_thigh.png','left_calf.png','right_calf.png');
     
-    var originX = 200, originY = 200;
+    var originX = 200, originY = 100;
 
     game.onload = function() {
         var scene = new Scene();
-        var sprite = new Sprite(100, 100);
-        sprite.image = game.assets['heart.png'];
-        scene.addChild(sprite);
         game.pushScene(scene);
         
-        var physicsWorld = new PhysicsWorld(0, 9.8)
+        var floor = new PhyBoxSprite(1600, 128, enchant.box2d.STATIC_SPRITE, 1.0, 0.5, 0.3, true, 2, 3);
+        floor.position = { x: 0, y: 600-15 };
         
-        sprite.addEventListener('enterframe', function() {
-            if (game.input.left) {
-                this.x = -50; this.y = 0;
-            } else if (game.input.right) {
-                this.x = 50; this.y = 0;
-            } else if (game.input.up) {
-                this.x = 0; this.y = -50;
-            } else if (game.input.down) {
-                this.x = 0; this.y = 50;
-            }
-        });
-        
-        // BODIES
-        var bodyDef = b2BodyDef();
-        var fixtureDef = b2FixtureDef();
-        var jointDef = b2RevoluteJointDef();
-        var box;
-        
-        // Person
-        bodyDef.type = b2Body.b2_dynamicBody;
+        // Head
+        var head = new PhyCircleSprite(45, enchant.box2d.DYNAMIC_SPRITE, .1, 0, 0.1, true, 1, 2);
+        head.position = { x: originX, y: originY + 45 };
+        head.image = game.assets["head.png"];
+        scene.addChild(head);
         
         // Torso
-        box = new b2PolygonShape();
-        box.SetAsBox(.4, .7);
-        fixtureDef.shape = box;
-        fixtureDef.density = 1.0;
-        fixtureDef.friction = 0.4;
-        fixtureDef.restitution = 0.1;
-        bd.position.Set(originX, originY);
-        var torso = physicsWorld.CreateBody(bodyDef);
-        torso.CreateFixture(fixtureDef);
+        var torso = new PhyBoxSprite(130, 200, enchant.box2d.DYNAMIC_SPRITE, .1, 0, 0.1, true, 1, 2);
+        torso.position = { x: originX, y: originY + 190 };
+        torso.image = game.assets["torso.png"];
+        scene.addChild(torso);
         
         // Arms
-        fixtureDef.density = 1.0;
-        fixtureDef.friction = 0.4;
-        fixtureDef.restitution = 0.1;
         // Left
-        box = new b2PolygonShape();
-        box.SetAsBox(.4, .7);
-        fixtureDef.shape = box;
-        bodyDef.position.Set(originX, originY + 0.4);
-        var leftArm = physicsWorld.CreateBody(bodyDef);
-        leftArm.CreateFixture(fixtureDef);
+        var leftArm = new PhyBoxSprite(50, 100, enchant.box2d.DYNAMIC_SPRITE, .1, 0, 0.1, true, 1, 2);
+        leftArm.position = { x: originX, y: originY + 150 };
+        leftArm.image = game.assets["left_arm.png"];
+        scene.addChild(leftArm);
         // Right
-        box = new b2PolygonShape();
-        box.SetAsBox(.4, .7);
-        fixtureDef.shape = box;
-        bodyDef.position.Set(originX, originY + 0.4);
-        var rightArm = physicsWorld.CreateBody(bodyDef);
-        rightArm.CreateFixture(fixtureDef);
+        var rightArm = new PhyBoxSprite(50, 100, enchant.box2d.DYNAMIC_SPRITE, .1, 0, 0.1, true, 1, 2);
+        rightArm.position = { x: originX, y: originY + 150 };
+        rightArm.image = game.assets["right_arm.png"];
+        scene.addChild(rightArm);
         
         // Forearms
-        fixtureDef.density = 1.0;
-        fixtureDef.friction = 0.4;
-        fixtureDef.restitution = 0.1;
         // Left
-        box = new b2PolygonShape();
-        box.SetAsBox(.4, .7);
-        fixtureDef.shape = box;
-        bodyDef.position.Set(originX, originY + 0.4);
-        var leftForearm = physicsWorld.CreateBody(bodyDef);
-        leftForearm.CreateFixture(fixtureDef);
+        var leftForearm = new PhyBoxSprite(50, 100, enchant.box2d.DYNAMIC_SPRITE, .1, 0, 0.1, true, 1, 2);
+        leftForearm.position = { x: originX, y: originY + 250 };
+        leftForearm.image = game.assets["left_forearm.png"];
+        scene.addChild(leftForearm);
         // Right
-        box = new b2PolygonShape();
-        box.SetAsBox(.4, .7);
-        fixtureDef.shape = box;
-        bodyDef.position.Set(originX, originY + 0.4);
-        var rightForearm = physicsWorld.CreateBody(bodyDef);
-        rightForearm.CreateFixture(fixtureDef);
+        var rightForearm = new PhyBoxSprite(50, 100, enchant.box2d.DYNAMIC_SPRITE, .1, 0, 0.1, true, 1, 2);
+        rightForearm.position = { x: originX, y: originY + 250 };
+        rightForearm.image = game.assets["right_forearm.png"];
+        scene.addChild(rightForearm);
+        
+        // Thighs
+        // Left
+        var leftThigh = new PhyBoxSprite(50, 100, enchant.box2d.DYNAMIC_SPRITE, .1, 0, 0.1, true, 1, 2);
+        leftThigh.position = { x: originX, y: originY + 270 };
+        leftThigh.image = game.assets["left_thigh.png"];
+        scene.addChild(leftThigh);
+        // Right
+        var rightThigh = new PhyBoxSprite(50, 100, enchant.box2d.DYNAMIC_SPRITE, .1, 0, 0.1, true, 1, 2);
+        rightThigh.position = { x: originX, y: originY + 270 };
+        rightThigh.image = game.assets["right_thigh.png"];
+        scene.addChild(rightThigh);
+        
+        // Calves
+        // Left
+        var leftCalf = new PhyBoxSprite(50, 100, enchant.box2d.DYNAMIC_SPRITE, .1, 0, 0.1, true, 1, 2);
+        leftCalf.position = { x: originX, y: originY + 370 };
+        leftCalf.image = game.assets["left_calf.png"];
+        scene.addChild(leftCalf);
+        // Right
+        var rightCalf = new PhyBoxSprite(50, 100, enchant.box2d.DYNAMIC_SPRITE, .1, 0, 0.1, true, 1, 2);
+        rightCalf.position = { x: originX, y: originY + 370 };
+        rightCalf.image = game.assets["right_calf.png"];
+        scene.addChild(rightCalf);
         
         
         // JOINTS
+        var neck = new PhyJoint(head, torso, originX + 65, originY + 90, -10, 10);
+        
+        var leftShoulder = new PhyJoint(leftArm, torso, originX + 25, originY + 100,
+          -1, 180, // lowerAngle, upperAngle
+          100, 2 // maxMotorTorque, motorSpeed
+        );
+        //leftShoulder.addEventListener("enterframe", function () {
+            
+        //});
+        
+        var rightShoulder = new PhyJoint(rightArm, torso, originX + 25, originY + 100,
+          -1, 180, // lowerAngle, upperAngle
+          100, 2 // maxMotorTorque, motorSpeed
+        );
+        
+        var leftElbow = new PhyJoint(leftForearm, leftArm, originX + 25, originY + 200,
+          -1, 135, // lowerAngle, upperAngle
+          100, 2 // maxMotorTorque, motorSpeed
+        );
+        
+        var rightElbow = new PhyJoint(rightForearm, rightArm, originX + 25, originY + 200,
+          -1, 135, // lowerAngle, upperAngle
+          100, 2 // maxMotorTorque, motorSpeed
+        );
+        
+        var leftHip = new PhyJoint(leftThigh, torso, originX + 25, originY + 220,
+          -30, 135, // lowerAngle, upperAngle
+          100, 2 // maxMotorTorque, motorSpeed
+        );
+        
+        var rightHip = new PhyJoint(rightThigh, torso, originX + 25, originY + 220,
+          -30, 135, // lowerAngle, upperAngle
+          100, 2 // maxMotorTorque, motorSpeed
+        );
+        
+        var leftKnee = new PhyJoint(leftCalf, leftThigh, originX + 25, originY + 320,
+          -150, 1, // lowerAngle, upperAngle
+          100, 2 // maxMotorTorque, motorSpeed
+        );
+        
+        var rightKnee = new PhyJoint(rightCalf, rightThigh, originX + 25, originY + 320,
+          -150, 1, // lowerAngle, upperAngle
+          100, 2 // maxMotorTorque, motorSpeed
+        );
+                
+        scene.addEventListener("enterframe", function () {
+            world.step(game.fps);
+        });
     };
     
     game.start();
