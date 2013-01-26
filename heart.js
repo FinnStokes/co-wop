@@ -7,8 +7,6 @@ var REFILL_FACTOR = Math.log(1/2)/HALF_LIFE
 
 // Volume = max_volume*(1 - exp(refill_factor*time))
 
-var cowop = {};
-
 cowop.Heart = enchant.Class.create(enchant.Sprite, {
     initialize: function(width, height, image) {
         enchant.Sprite.call(this, width, height);
@@ -35,7 +33,7 @@ cowop.Heart = enchant.Class.create(enchant.Sprite, {
             }
         }
         var that = this
-        keyPressListeners.push(function(key) {
+        cowop.keyPressListeners.push(function(key) {
             if (key == "8") {
                 that.pumpAtrium();
             } else if (key == "9") {

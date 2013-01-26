@@ -101,7 +101,7 @@ window.onload = function() {
           100, 2 // maxMotorTorque, motorSpeed
         );
         var leftShoulderClockwise = true;
-        keyPressListeners.push(function (key) {
+        cowop.keyPressListeners.push(function (key) {
             if (key == "q") {
                 leftShoulderClockwise = !leftShoulderClockwise;
                 if (leftShoulderClockwise) {
@@ -117,7 +117,7 @@ window.onload = function() {
           100, 2 // maxMotorTorque, motorSpeed
         );
         var rightShoulderClockwise = true;
-        keyPressListeners.push(function (key) {
+        cowop.keyPressListeners.push(function (key) {
             if (key == "e") {
                 rightShoulderClockwise = !rightShoulderClockwise;
                 if (rightShoulderClockwise) {
@@ -133,7 +133,7 @@ window.onload = function() {
           100, 2 // maxMotorTorque, motorSpeed
         );
         var leftElbowExtend = true;
-        keyPressListeners.push(function (key) {
+        cowop.keyPressListeners.push(function (key) {
             if (key == "w") {
                 leftElbowExtend = !leftElbowExtend;
                 if (leftElbowExtend) {
@@ -149,7 +149,7 @@ window.onload = function() {
           100, 2 // maxMotorTorque, motorSpeed
         );
         var rightElbowExtend = true;
-        keyPressListeners.push(function (key) {
+        cowop.keyPressListeners.push(function (key) {
             if (key == "r") {
                 rightElbowExtend = !rightElbowExtend;
                 if (rightElbowExtend) {
@@ -165,7 +165,7 @@ window.onload = function() {
           100, 2 // maxMotorTorque, motorSpeed
         );
         var leftHipClockwise = true;
-        keyPressListeners.push(function (key) {
+        cowop.keyPressListeners.push(function (key) {
             if (key == "v") {
                 leftHipClockwise = !leftHipClockwise;
                 if (leftHipClockwise) {
@@ -181,7 +181,7 @@ window.onload = function() {
           100, 2 // maxMotorTorque, motorSpeed
         );
         var rightHipClockwise = true;
-        keyPressListeners.push(function (key) {
+        cowop.keyPressListeners.push(function (key) {
             if (key == "n") {
                 rightHipClockwise = !rightHipClockwise;
                 if (rightHipClockwise) {
@@ -197,7 +197,7 @@ window.onload = function() {
           100, 2 // maxMotorTorque, motorSpeed
         );
         var leftKneeExtend = true;
-        keyPressListeners.push(function (key) {
+        cowop.keyPressListeners.push(function (key) {
             if (key == "b") {
                 leftKneeExtend = !leftKneeExtend;
                 if (leftKneeExtend) {
@@ -213,7 +213,7 @@ window.onload = function() {
           100, 2 // maxMotorTorque, motorSpeed
         );
         var rightKneeExtend = true;
-        keyPressListeners.push(function (key) {
+        cowop.keyPressListeners.push(function (key) {
             if (key == "m") {
                 rightKneeExtend = !rightKneeExtend;
                 if (rightKneeExtend) {
