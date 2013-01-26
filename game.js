@@ -148,7 +148,7 @@ window.onload = function() {
         );
         var leftHipClockwise = true;
         keyPressListeners.push(function (key) {
-            if (key == "u") {
+            if (key == "v") {
                 leftHipClockwise = !leftHipClockwise;
                 if (leftHipClockwise) {
                     leftHip.m_joint.SetMotorSpeed(2)
@@ -164,7 +164,7 @@ window.onload = function() {
         );
         var rightHipClockwise = true;
         keyPressListeners.push(function (key) {
-            if (key == "o") {
+            if (key == "n") {
                 rightHipClockwise = !rightHipClockwise;
                 if (rightHipClockwise) {
                     rightHip.m_joint.SetMotorSpeed(2)
@@ -180,7 +180,7 @@ window.onload = function() {
         );
         var leftKneeExtend = true;
         keyPressListeners.push(function (key) {
-            if (key == "i") {
+            if (key == "b") {
                 leftKneeExtend = !leftKneeExtend;
                 if (leftKneeExtend) {
                     leftKnee.m_joint.SetMotorSpeed(2)
@@ -196,7 +196,7 @@ window.onload = function() {
         );
         var rightKneeExtend = true;
         keyPressListeners.push(function (key) {
-            if (key == "p") {
+            if (key == "m") {
                 rightKneeExtend = !rightKneeExtend;
                 if (rightKneeExtend) {
                     rightKnee.m_joint.SetMotorSpeed(2)
