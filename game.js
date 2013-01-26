@@ -27,76 +27,76 @@ window.onload = function() {
         
         // Left Limbs
         var leftArm = new PhyBoxSprite(32, 81, enchant.box2d.DYNAMIC_SPRITE, .1, 0, 0.1, true, 1, 2);
-        leftArm.position = { x: originX, y: originY + 150 };
+        leftArm.position = { x: originX - 26.5, y: originY + 146.5 };
         leftArm.image = game.assets["left_arm.png"];
         scene.addChild(leftArm);
         
         var leftForearm = new PhyBoxSprite(34, 103, enchant.box2d.DYNAMIC_SPRITE, .1, 0, 0.1, true, 1, 2);
-        leftForearm.position = { x: originX, y: originY + 250 };
+        leftForearm.position = { x: originX -27.5, y: originY + 217.5 };
         leftForearm.image = game.assets["left_forearm.png"];
         scene.addChild(leftForearm);
         
         var leftThigh = new PhyBoxSprite(39, 92, enchant.box2d.DYNAMIC_SPRITE, .1, 0, 0.1, true, 1, 2);
-        leftThigh.position = { x: originX, y: originY + 270 };
+        leftThigh.position = { x: originX - 17.5, y: originY + 296.5};
         leftThigh.image = game.assets["left_thigh.png"];
         scene.addChild(leftThigh);
         
         var leftCalf = new PhyBoxSprite(48, 87, enchant.box2d.DYNAMIC_SPRITE, .1, 0, 0.1, true, 1, 2);
-        leftCalf.position = { x: originX, y: originY + 370 };
+        leftCalf.position = { x: originX -17.5, y: originY + 356.5 };
         leftCalf.image = game.assets["left_calf.png"];
         scene.addChild(leftCalf);
         
         var leftFoot = new PhyBoxSprite(60, 40, enchant.box2d.DYNAMIC_SPRITE, .1, 0, 0.1, true, 1, 2);
-        leftFoot.position = { x: originX, y: originY + 400 };
+        leftFoot.position = { x: originX - 3.5, y: originY + 403 };
         leftFoot.image = game.assets["left_foot.png"];
         scene.addChild(leftFoot);
         
         // Torso
         var torso = new PhyBoxSprite(115, 220, enchant.box2d.DYNAMIC_SPRITE, .1, 0, 0.1, true, 1, 2);
-        torso.position = { x: originX, y: originY + 190 };
+        torso.position = { x: originX, y: originY + 175 };
         torso.image = game.assets["torso.png"];
         scene.addChild(torso);
         
         // Head
         var head = new PhyCircleSprite(42.5, enchant.box2d.DYNAMIC_SPRITE, .1, 0, 0.1, true, 1, 2);
-        head.position = { x: originX, y: originY + 45 };
+        head.position = { x: originX, y: originY + 42.5 };
         head.image = game.assets["head.png"];
         scene.addChild(head);
         
         // Right Limbs
         var rightArm = new PhyBoxSprite(32, 81, enchant.box2d.DYNAMIC_SPRITE, .1, 0, 0.1, true, 1, 2);
-        rightArm.position = { x: originX, y: originY + 150 };
+        rightArm.position = { x: originX - 26.5, y: originY + 146.5 };
         rightArm.image = game.assets["right_arm.png"];
         scene.addChild(rightArm);
 
         var rightForearm = new PhyBoxSprite(34, 103, enchant.box2d.DYNAMIC_SPRITE, .1, 0, 0.1, true, 1, 2);
-        rightForearm.position = { x: originX, y: originY + 250 };
+        rightForearm.position = { x: originX -27.5, y: originY + 217.5 };
         rightForearm.image = game.assets["right_forearm.png"];
         scene.addChild(rightForearm);
 
         var rightThigh = new PhyBoxSprite(39, 92, enchant.box2d.DYNAMIC_SPRITE, .1, 0, 0.1, true, 1, 2);
-        rightThigh.position = { x: originX, y: originY + 270 };
+        rightThigh.position = { x: originX - 17.5, y: originY + 296.5};
         rightThigh.image = game.assets["right_thigh.png"];
         scene.addChild(rightThigh);
 
         var rightCalf = new PhyBoxSprite(48, 87, enchant.box2d.DYNAMIC_SPRITE, .1, 0, 0.1, true, 1, 2);
-        rightCalf.position = { x: originX, y: originY + 370 };
+        rightCalf.position = { x: originX -17.5, y: originY + 356.5 };
         rightCalf.image = game.assets["right_calf.png"];
         scene.addChild(rightCalf);
-        
+
         var rightFoot = new PhyBoxSprite(60, 40, enchant.box2d.DYNAMIC_SPRITE, .1, 0, 0.1, true, 1, 2);
-        rightFoot.position = { x: originX, y: originY + 400 };
+        rightFoot.position = { x: originX - 3.5, y: originY + 403 };
         rightFoot.image = game.assets["right_foot.png"];
         scene.addChild(rightFoot);
         
         
         // JOINTS
-        var neck = new PhyJoint(head, torso, originX + 65, originY + 90, -10, 10);
+        var neck = new PhyJoint(head, torso, originX + 3.5, originY + 72, -10, 10);
         
-        var leftAnkle = new PhyJoint(leftCalf, leftFoot, originX, originY + 400, -10, 70);
-        var rightAnkle = new PhyJoint(rightCalf, rightFoot, originX, originY + 400, -10, 70);
+        var leftAnkle = new PhyJoint(leftCalf, leftFoot, originX - 21.5, originY + 388, -10, 70);
+        var rightAnkle = new PhyJoint(rightCalf, rightFoot, originX - 21.5, originY + 388, -10, 70);
         
-        var leftShoulder = new PhyJoint(leftArm, torso, originX + 25, originY + 100,
+        var leftShoulder = new PhyJoint(leftArm, torso, originX - 27.5, originY + 115,
           -1, 180, // lowerAngle, upperAngle
           100, 2 // maxMotorTorque, motorSpeed
         );
@@ -112,7 +112,7 @@ window.onload = function() {
             }
         });
         
-        var rightShoulder = new PhyJoint(rightArm, torso, originX + 25, originY + 100,
+        var rightShoulder = new PhyJoint(rightArm, torso, originX - 27.5, originY + 115,
           -1, 180, // lowerAngle, upperAngle
           100, 2 // maxMotorTorque, motorSpeed
         );
@@ -128,7 +128,7 @@ window.onload = function() {
             }
         });
         
-        var leftElbow = new PhyJoint(leftForearm, leftArm, originX + 25, originY + 200,
+        var leftElbow = new PhyJoint(leftForearm, leftArm, originX - 27.5, originY + 176,
           -1, 135, // lowerAngle, upperAngle
           100, 2 // maxMotorTorque, motorSpeed
         );
@@ -144,7 +144,7 @@ window.onload = function() {
             }
         });
         
-        var rightElbow = new PhyJoint(rightForearm, rightArm, originX + 25, originY + 200,
+        var rightElbow = new PhyJoint(rightForearm, rightArm, originX - 27.5, originY + 176,
           -1, 135, // lowerAngle, upperAngle
           100, 2 // maxMotorTorque, motorSpeed
         );
@@ -160,7 +160,7 @@ window.onload = function() {
             }
         });
         
-        var leftHip = new PhyJoint(leftThigh, torso, originX + 25, originY + 220,
+        var leftHip = new PhyJoint(leftThigh, torso, originX - 16.5, originY + 255,
           -30, 135, // lowerAngle, upperAngle
           100, 2 // maxMotorTorque, motorSpeed
         );
@@ -176,7 +176,7 @@ window.onload = function() {
             }
         });
         
-        var rightHip = new PhyJoint(rightThigh, torso, originX + 25, originY + 220,
+        var rightHip = new PhyJoint(rightThigh, torso, originX - 16.5, originY + 255,
           -30, 135, // lowerAngle, upperAngle
           100, 2 // maxMotorTorque, motorSpeed
         );
@@ -192,7 +192,7 @@ window.onload = function() {
             }
         });
         
-        var leftKnee = new PhyJoint(leftCalf, leftThigh, originX + 25, originY + 320,
+        var leftKnee = new PhyJoint(leftCalf, leftThigh, originX - 16.5, originY + 323,
           -150, 1, // lowerAngle, upperAngle
           100, 2 // maxMotorTorque, motorSpeed
         );
@@ -208,7 +208,7 @@ window.onload = function() {
             }
         });
         
-        var rightKnee = new PhyJoint(rightCalf, rightThigh, originX + 25, originY + 320,
+        var rightKnee = new PhyJoint(rightCalf, rightThigh, originX - 16.5, originY + 323,
           -150, 1, // lowerAngle, upperAngle
           100, 2 // maxMotorTorque, motorSpeed
         );
