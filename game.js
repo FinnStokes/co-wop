@@ -5,8 +5,12 @@ var world = new enchant.box2d.PhysicsWorld(0, 20);
 window.onload = function() {
     var game = new Game(800, 600);
     game.fps = 30;
-    game.preload('head.png','torso.png','left_arm.png','right_arm.png','left_forearm.png','right_forearm.png',
-                 'left_thigh.png','right_thigh.png','left_calf.png','right_calf.png');
+    game.preload('heart.png', 'head.png','torso.png',
+        'left_arm.png','right_arm.png',
+        'left_forearm.png','right_forearm.png',
+        'left_thigh.png','right_thigh.png',
+        'left_calf.png','right_calf.png'
+    );
     
     var originX = 200, originY = 100;
 
@@ -14,7 +18,7 @@ window.onload = function() {
         var scene = new Scene();
         game.pushScene(scene);
 
-        var heart = new cowop.Heart(150,150);
+        var heart = new cowop.Heart(150, 150, game.assets["heart.png"]);
         scene.addChild(heart);
         
         var floor = new PhyBoxSprite(1600, 128, enchant.box2d.STATIC_SPRITE, 1.0, 0.5, 0.3, true, 2, 3);

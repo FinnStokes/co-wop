@@ -10,17 +10,29 @@ var REFILL_FACTOR = Math.log(1/2)/HALF_LIFE
 var cowop = {};
 
 cowop.Heart = enchant.Class.create(enchant.Sprite, {
-    initialize: function(width, height) {
+    initialize: function(width, height, image) {
         enchant.Sprite.call(this, width, height);
+        this.image = image;
+        this.frame = 0;
         this.apumping = true;
         this.vpumping = true;
         this.avol = 0;
         this.vvol = 0;
         this.pumpAtrium = function() {
             this.apumping = true;
+            if (this.vpumping) {
+                this.frame = 3
+            } else {
+                this.frame = 2
+            }
         }
         this.pumpVentricle = function() {
             this.vpumping = true;
+            if (this.apumping) {
+                this.frame = 3
+            } else {
+                this.frame = 1
+            }
         }
         var that = this
         keyPressListeners.push(function(key) {
@@ -31,17 +43,24 @@ cowop.Heart = enchant.Class.create(enchant.Sprite, {
             }
         });
         this.addEventListener(enchant.Event.ENTER_FRAME, function(e) {
+            this.frame = 0;
             if (this.apumping) {
+                this.frame += 2;
                 if (this.avol > ATRIUM_RATE*e.elapsed) {
-                    this.vvol += ATRIUM_RATE*e.elapsed;
+                    if (!this.vpumping) {
+                        this.vvol += ATRIUM_RATE*e.elapsed;
+                    }
                     this.avol -= ATRIUM_RATE*e.elapsed;
                 } else {
-                    this.vvol += this.avol;
+                    if (!this.vpumping) {
+                        this.vvol += this.avol;
+                    }
                     this.avol = 0;
                     this.apumping = false;
                 }
             }
             if (this.vpumping) {
+                this.frame += 1;
                 if (this.vvol > VENTRICLE_RATE*e.elapsed) {
                     this.vvol -= VENTRICLE_RATE*e.elapsed;
                 } else {
