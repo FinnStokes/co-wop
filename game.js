@@ -1,15 +1,5 @@
 enchant();
 
-keyPressListeners = new Array;
-
-document.onkeypress = function (evt) {
-    var charCode = evt.which || evt.keyCode;
-    var charStr = String.fromCharCode(charCode);
-    for (var i in keyPressListeners) {
-        keyPressListeners[i](charStr);
-    }
-}
-
 var world = new enchant.box2d.PhysicsWorld(0, 20);
 
 window.onload = function() {
