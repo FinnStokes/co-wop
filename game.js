@@ -89,7 +89,6 @@ window.onload = function() {
           100, 2 // maxMotorTorque, motorSpeed
         );
         var leftShoulderClockwise = true;
-        var leftShoulderExtending = true;
         keyPressListeners.push(function (key) {
             if (key == "q") {
                 leftShoulderClockwise = !leftShoulderClockwise;
@@ -98,9 +97,6 @@ window.onload = function() {
                 } else {
                     leftShoulder.m_joint.SetMotorSpeed(-2)
                 }
-            } else if (key == "w") {
-                leftShoulderExtending = !leftShoulderExtending;
-                
             }
         });
         
@@ -108,36 +104,113 @@ window.onload = function() {
           -1, 180, // lowerAngle, upperAngle
           100, 2 // maxMotorTorque, motorSpeed
         );
+        var rightShoulderClockwise = true;
+        keyPressListeners.push(function (key) {
+            if (key == "e") {
+                rightShoulderClockwise = !rightShoulderClockwise;
+                if (rightShoulderClockwise) {
+                    rightShoulder.m_joint.SetMotorSpeed(2)
+                } else {
+                    rightShoulder.m_joint.SetMotorSpeed(-2)
+                }
+            }
+        });
         
         var leftElbow = new PhyJoint(leftForearm, leftArm, originX + 25, originY + 200,
           -1, 135, // lowerAngle, upperAngle
           100, 2 // maxMotorTorque, motorSpeed
         );
+        var leftElbowExtend = true;
+        keyPressListeners.push(function (key) {
+            if (key == "w") {
+                leftElbowExtend = !leftElbowExtend;
+                if (leftElbowExtend) {
+                    leftElbow.m_joint.SetMotorSpeed(2)
+                } else {
+                    leftElbow.m_joint.SetMotorSpeed(-2)
+                }
+            }
+        });
         
         var rightElbow = new PhyJoint(rightForearm, rightArm, originX + 25, originY + 200,
           -1, 135, // lowerAngle, upperAngle
           100, 2 // maxMotorTorque, motorSpeed
         );
+        var rightElbowExtend = true;
+        keyPressListeners.push(function (key) {
+            if (key == "r") {
+                rightElbowExtend = !rightElbowExtend;
+                if (rightElbowExtend) {
+                    rightElbow.m_joint.SetMotorSpeed(2)
+                } else {
+                    rightElbow.m_joint.SetMotorSpeed(-2)
+                }
+            }
+        });
         
         var leftHip = new PhyJoint(leftThigh, torso, originX + 25, originY + 220,
           -30, 135, // lowerAngle, upperAngle
           100, 2 // maxMotorTorque, motorSpeed
         );
+        var leftHipClockwise = true;
+        keyPressListeners.push(function (key) {
+            if (key == "u") {
+                leftHipClockwise = !leftHipClockwise;
+                if (leftHipClockwise) {
+                    leftHip.m_joint.SetMotorSpeed(2)
+                } else {
+                    leftHip.m_joint.SetMotorSpeed(-2)
+                }
+            }
+        });
         
         var rightHip = new PhyJoint(rightThigh, torso, originX + 25, originY + 220,
           -30, 135, // lowerAngle, upperAngle
           100, 2 // maxMotorTorque, motorSpeed
         );
+        var rightHipClockwise = true;
+        keyPressListeners.push(function (key) {
+            if (key == "o") {
+                rightHipClockwise = !rightHipClockwise;
+                if (rightHipClockwise) {
+                    rightHip.m_joint.SetMotorSpeed(2)
+                } else {
+                    rightHip.m_joint.SetMotorSpeed(-2)
+                }
+            }
+        });
         
         var leftKnee = new PhyJoint(leftCalf, leftThigh, originX + 25, originY + 320,
           -150, 1, // lowerAngle, upperAngle
           100, 2 // maxMotorTorque, motorSpeed
         );
+        var leftKneeExtend = true;
+        keyPressListeners.push(function (key) {
+            if (key == "i") {
+                leftKneeExtend = !leftKneeExtend;
+                if (leftKneeExtend) {
+                    leftKnee.m_joint.SetMotorSpeed(2)
+                } else {
+                    leftKnee.m_joint.SetMotorSpeed(-2)
+                }
+            }
+        });
         
         var rightKnee = new PhyJoint(rightCalf, rightThigh, originX + 25, originY + 320,
           -150, 1, // lowerAngle, upperAngle
           100, 2 // maxMotorTorque, motorSpeed
         );
+        var rightKneeExtend = true;
+        keyPressListeners.push(function (key) {
+            if (key == "p") {
+                rightKneeExtend = !rightKneeExtend;
+                if (rightKneeExtend) {
+                    rightKnee.m_joint.SetMotorSpeed(2)
+                } else {
+                    rightKnee.m_joint.SetMotorSpeed(-2)
+                }
+            }
+        });
                 
         scene.addEventListener("enterframe", function () {
             world.step(game.fps);
