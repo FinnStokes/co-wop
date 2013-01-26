@@ -1,5 +1,15 @@
 enchant();
 
+keyPressListeners = new Array;
+
+document.onkeypress = function (evt) {
+    var charCode = evt.which || evt.keyCode;
+    var charStr = String.fromCharCode(charCode);
+    for (var i in keyPressListeners) {
+        keyPressListeners[i](charStr);
+    }
+}
+
 var world = new enchant.box2d.PhysicsWorld(0, 20);
 
 window.onload = function() {
@@ -88,9 +98,21 @@ window.onload = function() {
           -1, 180, // lowerAngle, upperAngle
           100, 2 // maxMotorTorque, motorSpeed
         );
-        //leftShoulder.addEventListener("enterframe", function () {
-            
-        //});
+        var leftShoulderClockwise = true;
+        var leftShoulderExtending = true;
+        keyPressListeners.push(function (key) {
+            if (key == "q") {
+                leftShoulderClockwise = !leftShoulderClockwise;
+                if (leftShoulderClockwise) {
+                    leftShoulder.m_joint.SetMotorSpeed(2)
+                } else {
+                    leftShoulder.m_joint.SetMotorSpeed(-2)
+                }
+            } else if (key == "w") {
+                leftShoulderExtending = !leftShoulderExtending;
+                
+            }
+        });
         
         var rightShoulder = new PhyJoint(rightArm, torso, originX + 25, originY + 100,
           -1, 180, // lowerAngle, upperAngle
