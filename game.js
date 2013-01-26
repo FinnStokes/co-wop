@@ -14,7 +14,7 @@ window.onload = function() {
         var scene = new Scene();
         game.pushScene(scene);
 
-        var heart = new cowop.Heart();
+        var heart = new cowop.Heart(150,150);
         scene.addChild(heart);
         
         var floor = new PhyBoxSprite(1600, 128, enchant.box2d.STATIC_SPRITE, 1.0, 0.5, 0.3, true, 2, 3);
