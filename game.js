@@ -11,6 +11,10 @@ var FLOOR_DENSITY = 1.0;
 var FLOOR_FRICTION = 1.0;
 var FLOOR_RESTITUTION = 1.0;
 
+var OBSTACLE_DENSITY = 2.0;
+var OBSTACLE_FRICTION = 1.0;
+var OBSTACLE_RESTITUTION = 0.5;
+
 var PHONE_DENSITY = 1.0;
 var PHONE_FRICTION = 1.0;
 var PHONE_RESTITUTION = 1.0;
@@ -22,7 +26,7 @@ var world = new enchant.box2d.PhysicsWorld(0, 20);
 window.onload = function() {
     var game = new Game(800, 600);
     game.fps = 30;
-    game.preload('phone.png',
+    game.preload('background.png','phone.png','ball.png',
         'heart.png', 'head.png','torso.png',
         'left_foot.png', 'right_foot.png',
         'left_arm.png','right_arm.png',
@@ -36,6 +40,10 @@ window.onload = function() {
     game.onload = function() {
         var scene = new Scene();
         game.pushScene(scene);
+        
+        var background = new enchant.Sprite(800, 600);
+        background.image = game.assets["background.png"];
+        scene.addChild(background);
 
         var arteries = new cowop.Arteries(150, 150,  null);
         scene.addChild(arteries);
@@ -64,6 +72,17 @@ window.onload = function() {
             true, 2, 3
         );
         rightWall.position = { x: 816, y: 300 };
+        
+        // Obstacles
+        var ball = new PhyCircleSprite(
+            50,
+            enchant.box2d.DYNAMIC_SPRITE,
+            OBSTACLE_DENSITY, OBSTACLE_FRICTION, OBSTACLE_RESTITUTION,
+            true, 2, 3
+        );
+        ball.image = game.assets["ball.png"];
+        ball.position = { x: 400, y: 534 };
+        scene.addChild(ball);
         
         // Left Limbs
         var leftArm = new PhyBoxSprite(
@@ -326,13 +345,13 @@ window.onload = function() {
         
         // PHONE
         var phone = new PhyBoxSprite(
-            20, 60,
+            85, 25,
             enchant.box2d.STATIC_SPRITE,
             PHONE_DENSITY, PHONE_FRICTION, PHONE_RESTITUTION,
             true, 1, 2
         );
         phone.image = game.assets["phone.png"];
-        phone.position = { x: 250, y: 500 };
+        phone.position = { x: 690, y: 250 };
         scene.addChild(phone);
         var phoneInHand = false;
         scene.addEventListener("enterframe", function () {
@@ -340,12 +359,12 @@ window.onload = function() {
             } else {
                 var ld = Math.pow(phone.x - leftForearm.x, 2) + Math.pow(phone.y - leftForearm.y, 2)
                 var rd = Math.pow(phone.x - rightForearm.x, 2) + Math.pow(phone.y - rightForearm.y, 2)
-                if (ld < 16*16) {
+                if (ld < 8*8) {
                     phoneInHand = true;
                     phone.type = b2Body.b2_dynamicBody;
                     phone.sleep = false;
                     var j = new PhyJoint(phone, leftForearm, phone.x, phone.y, -1, 1);
-                } else if (rd < 16*16) {
+                } else if (rd < 8*8) {
                     phoneInHand = true;
                     phone.type = b2Body.b2_dynamicBody;
                     phone.sleep = false;
