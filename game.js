@@ -139,7 +139,7 @@ window.onload = function() {
             ARTY_DENSITY, ARTY_FRICTION, ARTY_RESTITUTION,
             true, 1, 2
         );
-        leftThigh.position = { x: originX - 17.5, y: originY + 296.5};
+        leftThigh.position = { x: originX + 9, y: originY + 296.5};
         leftThigh.image = game.assets["left_thigh.png"];
         scene.addChild(leftThigh);
         
@@ -149,7 +149,7 @@ window.onload = function() {
             ARTY_DENSITY, ARTY_FRICTION, ARTY_RESTITUTION,
             true, 1, 2
         );
-        leftCalf.position = { x: originX -17.5, y: originY + 356.5 };
+        leftCalf.position = { x: originX +9, y: originY + 356.5 };
         leftCalf.image = game.assets["left_calf.png"];
         scene.addChild(leftCalf);
         
@@ -159,7 +159,7 @@ window.onload = function() {
             ARTY_DENSITY, ARTY_FRICTION, ARTY_RESTITUTION,
             true, 1, 2
         );
-        leftFoot.position = { x: originX - 3.5, y: originY + 403 };
+        leftFoot.position = { x: originX +23, y: originY + 403 };
         leftFoot.image = game.assets["left_foot.png"];
         scene.addChild(leftFoot);
         
@@ -240,7 +240,7 @@ window.onload = function() {
         // JOINTS
         var neck = new PhyJoint(head, torso, originX + 3.5, originY + 72, -10, 10);
         
-        var leftAnkle = new PhyJoint(leftCalf, leftFoot, originX - 21.5, originY + 388, -10, 70);
+        var leftAnkle = new PhyJoint(leftCalf, leftFoot, originX + 5, originY + 388, -10, 70);
         var rightAnkle = new PhyJoint(rightCalf, rightFoot, originX - 21.5, originY + 388, -10, 70);
         
         var leftShoulder = new PhyJoint(leftArm, torso, originX - 27.5, originY + 115,
@@ -307,7 +307,7 @@ window.onload = function() {
             }
         });
         
-        var leftHip = new PhyJoint(leftThigh, torso, originX -16.5, originY + 255,
+        var leftHip = new PhyJoint(leftThigh, torso, originX + 10, originY + 255,
           -30, 135, // lowerAngle, upperAngle
           ARTY_MAX_MOTOR_TORQUE, ARTY_MOTOR_SPEED // maxMotorTorque, motorSpeed
         );
@@ -339,7 +339,7 @@ window.onload = function() {
             }
         });
         
-        var leftKnee = new PhyJoint(leftCalf, leftThigh, originX - 16.5, originY + 323,
+        var leftKnee = new PhyJoint(leftCalf, leftThigh, originX + 10, originY + 323,
           -135, 1, // lowerAngle, upperAngle
           ARTY_MAX_MOTOR_TORQUE, ARTY_MOTOR_SPEED // maxMotorTorque, motorSpeed
         );
