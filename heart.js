@@ -4,6 +4,7 @@ var ATRIUM_RATE = ATRIUM_VOLUME * 3 / 1000
 var VENTRICLE_RATE = VENTRICLE_VOLUME * 3 / 1000
 var HALF_LIFE = 125
 var REFILL_FACTOR = Math.log(1/2)/HALF_LIFE
+var OXYGEN_MAX = 100
 
 // Volume = max_volume*(1 - exp(refill_factor*time))
 
@@ -14,22 +15,26 @@ cowop.Heart = enchant.Class.create(enchant.Sprite, {
         this.frame = 0;
         this.apumping = true;
         this.vpumping = true;
+        this.alive = true;
         this.avol = 0;
         this.vvol = 0;
+        this.ovol = 0;
         this.pumpAtrium = function() {
             this.apumping = true;
+            this.ovol -= 10;
             if (this.vpumping) {
-                this.frame = 3
+                this.frame = 3;
             } else {
-                this.frame = 2
+                this.frame = 2;
             }
         }
         this.pumpVentricle = function() {
             this.vpumping = true;
+            this.ovol -= 50
             if (this.apumping) {
-                this.frame = 3
+                this.frame = 3;
             } else {
-                this.frame = 1
+                this.frame = 1;
             }
         }
         var that = this
@@ -41,6 +46,13 @@ cowop.Heart = enchant.Class.create(enchant.Sprite, {
             }
         });
         this.addEventListener(enchant.Event.ENTER_FRAME, function(e) {
+            this.ovol -= e.elapsed/1000;
+
+            //Kill the heart if oxygen volume <= 0
+            if (this.ovol <= 0 && this.alive) {
+                this.alive = false; //Somehow make the game end here?
+            }
+
             this.frame = 0;
             if (this.apumping) {
                 this.frame += 2;
@@ -61,7 +73,9 @@ cowop.Heart = enchant.Class.create(enchant.Sprite, {
                 this.frame += 1;
                 if (this.vvol > VENTRICLE_RATE*e.elapsed) {
                     this.vvol -= VENTRICLE_RATE*e.elapsed;
+                    this.ovol += VENTRICLE_RATE*e.elapsed;
                 } else {
+                    this.ovol += this.vvol;
                     this.vvol = 0;
                     this.vpumping = false;
                 }
@@ -72,7 +86,7 @@ cowop.Heart = enchant.Class.create(enchant.Sprite, {
             if (!this.vpumping && this.vvol/VENTRICLE_VOLUME < this.avol/ATRIUM_VOLUME) {
                 this.vvol -= REFILL_FACTOR*e.elapsed * (VENTRICLE_VOLUME - this.avol);
             }
-            console.log(Math.floor(this.avol), Math.floor(this.vvol))
+            console.log(Math.floor(this.avol), Math.floor(this.vvol));
         });
     },
 });
