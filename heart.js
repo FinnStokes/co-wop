@@ -4,7 +4,7 @@ var ATRIUM_RATE = ATRIUM_VOLUME * 3 / 1000
 var VENTRICLE_RATE = VENTRICLE_VOLUME * 3 / 1000
 var HALF_LIFE = 125
 var REFILL_FACTOR = Math.log(1/2)/HALF_LIFE
-var OXYGEN_MAX = 100
+var OXYGEN_MAX = 500
 
 // Volume = max_volume*(1 - exp(refill_factor*time))
 
@@ -18,23 +18,27 @@ cowop.Heart = enchant.Class.create(enchant.Sprite, {
         this.alive = true;
         this.avol = 0;
         this.vvol = 0;
-        this.ovol = 0;
+        this.ovol = OXYGEN_MAX - 100;
         this.pumpAtrium = function() {
-            this.apumping = true;
-            this.ovol -= 10;
-            if (this.vpumping) {
-                this.frame = 3;
-            } else {
-                this.frame = 2;
+            if (!this.apumping) {
+                this.apumping = true;
+                this.ovol -= 10;
+                if (this.vpumping) {
+                    this.frame = 3;
+                } else {
+                    this.frame = 2;
+                }
             }
         }
         this.pumpVentricle = function() {
-            this.vpumping = true;
-            this.ovol -= 50
-            if (this.apumping) {
-                this.frame = 3;
-            } else {
-                this.frame = 1;
+            if (!this.vpumping) {
+                this.vpumping = true;
+                this.ovol -= 40;
+                if (this.apumping) {
+                    this.frame = 3;
+                } else {
+                    this.frame = 1;
+                }
             }
         }
         var that = this
@@ -51,6 +55,10 @@ cowop.Heart = enchant.Class.create(enchant.Sprite, {
             //Kill the heart if oxygen volume <= 0
             if (this.ovol <= 0 && this.alive) {
                 this.alive = false; //Somehow make the game end here?
+            }
+
+            if (this.ovol > OXYGEN_MAX) {
+                this.ovol = OXYGEN_MAX
             }
 
             this.frame = 0;
@@ -86,7 +94,7 @@ cowop.Heart = enchant.Class.create(enchant.Sprite, {
             if (!this.vpumping && this.vvol/VENTRICLE_VOLUME < this.avol/ATRIUM_VOLUME) {
                 this.vvol -= REFILL_FACTOR*e.elapsed * (VENTRICLE_VOLUME - this.avol);
             }
-            console.log(Math.floor(this.avol), Math.floor(this.vvol));
+            console.log(Math.floor(this.avol), Math.floor(this.vvol), Math.floor(this.ovol));
         });
     },
 });
