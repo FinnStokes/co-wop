@@ -166,7 +166,7 @@ cowop.Arteries = enchant.Class.create(enchant.Sprite, {
         this.rightLeg = new cowop.Organ(x+18,y+52,172,18,game.assets["arteries_right_leg.png"],ORGAN_CAPACITY,ORGAN_CONSUMPTION);
         this.rightIliac.rightChild = this.rightLeg;
         scene.addChild(this.rightLeg);
-        this.bladder = new cowop.Organ(x,y,0,0,ORGAN_CAPACITY,ORGAN_CONSUMPTION);
+        this.bladder = new cowop.Organ(x,y,0,0,null,ORGAN_CAPACITY,ORGAN_CONSUMPTION);
         this.rightIliac.leftChild = this.bladder;
         scene.addChild(this.bladder);
         
@@ -184,6 +184,11 @@ cowop.Arteries = enchant.Class.create(enchant.Sprite, {
         scene.addChild(this.leftBrainBar);
         this.rightBrainBar = new cowop.OxyMeter(111,20,game.assets['bar.png'],620,150);
         scene.addChild(this.rightBrainBar);
+    
+        this.bladderBar = new cowop.OxyMeter(111,20,game.assets['bar.png'],320,85);
+        scene.addChild(this.bladderBar);
+        this.stomachBar = new cowop.OxyMeter(111,20,game.assets['bar.png'],440,50);
+        scene.addChild(this.stomachBar);
         
         var that = this;
         
@@ -194,12 +199,11 @@ cowop.Arteries = enchant.Class.create(enchant.Sprite, {
                 that.rightArmBar.update(that.rightArm.oxygenation);
                 that.leftBrainBar.update(that.leftBrain.oxygenation);
                 that.rightBrainBar.update(that.rightBrain.oxygenation);
-                that.update(game, loseScene)
+                that.bladderBar.update(that.bladder.oxygenation);
+                that.stomachBar.update(that.stomach.oxygenation);
         });
-
-        this.aorta.flow = true;
-        this.aorta.update();
-    },
+		
+	},
     
     supply: function(volume) {
         this.aorta.suply(volume);
