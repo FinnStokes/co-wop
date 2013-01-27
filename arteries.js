@@ -201,6 +201,7 @@ cowop.Arteries = enchant.Class.create(enchant.Sprite, {
                 that.rightBrainBar.update(that.rightBrain.oxygenation);
                 that.bladderBar.update(that.bladder.oxygenation);
                 that.stomachBar.update(that.stomach.oxygenation);
+                that.update(game, loseScene)
         });
 
         this.aorta.flow = true;
