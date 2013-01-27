@@ -45,6 +45,7 @@ window.onload = function() {
         game.pushScene(scene);
 
         var winScene = new Scene(); //This is the win scene
+        var loseScene = new Scene(); //This is the lose scene
         
         var background = new enchant.Sprite(800, 600);
         background.image = game.assets["background.png"];

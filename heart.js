@@ -54,7 +54,8 @@ cowop.Heart = enchant.Class.create(enchant.Sprite, {
 
             //Kill the heart if oxygen volume <= 0
             if (this.ovol <= 0 && this.alive) {
-                this.alive = false; //Somehow make the game end here?
+                pushScene(loseScene);
+                this.alive = false;
             }
 
             if (this.ovol > OXYGEN_MAX) {
