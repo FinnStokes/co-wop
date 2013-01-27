@@ -1,5 +1,8 @@
 var ORGAN_CAPACITY = 210;
 var ORGAN_CONSUMPTION = 20;
+var BRAIN_CONSUMPTION_FACTOR = 0.7;
+var BLADDER_CONSUP_FACTOR = 0.1;
+var STOMACH_CONSUP_FACTOR = 0.2;
 
 cowop.Junction = enchant.Class.create(enchant.Sprite, {
     initialize: function(x, y, width, height, image) {
@@ -136,7 +139,7 @@ cowop.Arteries = enchant.Class.create(enchant.Sprite, {
         this.leftArm = new cowop.Organ(x+223,y+119,117,33,game.assets["arteries_left_arm.png"],ORGAN_CAPACITY,ORGAN_CONSUMPTION);
         this.leftBrachial.rightChild = this.leftArm;
         scene.addChild(this.leftArm);
-        this.leftBrain = new cowop.Organ(x+371,y+109,20,5,game.assets["arteries_left_brain.png"],ORGAN_CAPACITY,ORGAN_CONSUMPTION*0.7);
+        this.leftBrain = new cowop.Organ(x+371,y+109,20,5,game.assets["arteries_left_brain.png"],ORGAN_CAPACITY,ORGAN_CONSUMPTION*BRAIN_CONSUMPTION_FACTOR);
         this.leftBrachial.leftChild = this.leftBrain;
         scene.addChild(this.leftBrain);
         
@@ -146,7 +149,7 @@ cowop.Arteries = enchant.Class.create(enchant.Sprite, {
         this.rightArm = new cowop.Organ(x+214,y+26,126,25,game.assets["arteries_right_arm.png"],ORGAN_CAPACITY,ORGAN_CONSUMPTION);
         this.rightBrachial.leftChild = this.rightArm;
         scene.addChild(this.rightArm);
-        this.rightBrain = new cowop.Organ(x+363,y+64,28,13,game.assets["arteries_right_brain.png"],ORGAN_CAPACITY,ORGAN_CONSUMPTION*0.7);
+        this.rightBrain = new cowop.Organ(x+363,y+64,28,13,game.assets["arteries_right_brain.png"],ORGAN_CAPACITY,ORGAN_CONSUMPTION*BRAIN_CONSUMPTION_FACTOR);
         this.rightBrachial.rightChild = this.rightBrain;
         scene.addChild(this.rightBrain);
         
@@ -156,7 +159,7 @@ cowop.Arteries = enchant.Class.create(enchant.Sprite, {
         this.leftLeg = new cowop.Organ(x+22,y+118,184,27,game.assets["arteries_left_leg.png"],ORGAN_CAPACITY,ORGAN_CONSUMPTION);
         this.leftIliac.rightChild = this.leftLeg;
         scene.addChild(this.leftLeg);
-        this.stomach = new cowop.Organ(x+236,y+116,4,4,game.assets["arteries_stomach.png"],ORGAN_CAPACITY,ORGAN_CONSUMPTION*0.2);
+        this.stomach = new cowop.Organ(x+236,y+116,4,4,game.assets["arteries_stomach.png"],ORGAN_CAPACITY,ORGAN_CONSUMPTION*STOMACH_CONSUP_FACTOR);
         this.leftIliac.leftChild = this.stomach;
         scene.addChild(this.stomach);
         
@@ -166,7 +169,7 @@ cowop.Arteries = enchant.Class.create(enchant.Sprite, {
         this.rightLeg = new cowop.Organ(x+18,y+52,172,18,game.assets["arteries_right_leg.png"],ORGAN_CAPACITY,ORGAN_CONSUMPTION);
         this.rightIliac.rightChild = this.rightLeg;
         scene.addChild(this.rightLeg);
-        this.bladder = new cowop.Organ(x,y,0,0,null,ORGAN_CAPACITY,ORGAN_CONSUMPTION*0.1);
+        this.bladder = new cowop.Organ(x,y,0,0,null,ORGAN_CAPACITY,ORGAN_CONSUMPTION*BLADDER_CONSUP_FACTOR);
         this.rightIliac.leftChild = this.bladder;
         scene.addChild(this.bladder);
         
