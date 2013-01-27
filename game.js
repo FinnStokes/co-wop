@@ -38,7 +38,14 @@ window.onload = function() {
         'left_thigh.png','right_thigh.png',
         'left_calf.png','right_calf.png',
         'WinScreen.png', 'LoseScreen.png',
-        'bar.png'
+        'bar.png',
+        'arteries.png','arteries_aorta.png',
+        'arteries_left_brachial.png','arteries_right_brachial.png',
+        'arteries_left_iliac.png','arteries_right_iliac.png',
+        'arteries_left_brain.png','arteries_right_brain.png',
+        'arteries_left_arm.png','arteries_right_arm.png',
+        'arteries_left_leg.png','arteries_right_leg.png',
+        'arteries_stomach.png'
     );
     
     var originX = 200, originY = 100;
@@ -61,8 +68,7 @@ window.onload = function() {
         background.image = game.assets["background.png"];
         scene.addChild(background);
 
-        var arteries = new cowop.Arteries(150, 150,  null);
-        scene.addChild(arteries);
+        var arteries = new cowop.Arteries(250, 0, 450, 180, game.assets["arteries.png"], game, scene);
 
         var oxyMeter = new cowop.OxyMeter(111, 20, game.assets['bar.png'], 0, 155)
         var heart = new cowop.Heart(150, 150, game.assets["heart.png"], game, loseScene, oxyMeter);

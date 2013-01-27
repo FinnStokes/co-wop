@@ -1,8 +1,10 @@
 cowop.Junction = enchant.Class.create(enchant.Sprite, {
-    initialize: function(width, height, image) {
+    initialize: function(x, y, width, height, image) {
         enchant.Sprite.call(this, width, height);
-        //this.image = image;
+        this.image = image;
         this.frame = 0;
+        this.x = x;
+        this.y = y;
         this.flow  = false;
         this.right = false;
         this.leftChild;
@@ -20,18 +22,18 @@ cowop.Junction = enchant.Class.create(enchant.Sprite, {
 	    this.leftChild.flow = false;
 	    
 	    if(this.flow){
-		this.sprite.frame = [3];
+		this.frame = [3];
 	    }else{
-		this.sprite.frame = [1];
+		this.frame = [1];
 	    }
 	}else{
 	    this.rightChild.flow = false;
 	    this.leftChild.flow = this.flow;
 	    
 	    if(this.flow){
-		this.sprite.frame = [2];
+		this.frame = [2];
 	    }else{
-		this.sprite.frame = [0];
+		this.frame = [0];
 	    }
 	}
 	this.leftChild.update();
@@ -47,10 +49,12 @@ cowop.Junction = enchant.Class.create(enchant.Sprite, {
 })
 
 cowop.Branch = enchant.Class.create(enchant.Sprite, {
-    initialize: function(width, height, image) {
+    initialize: function(x, y, width, height, image) {
         enchant.Sprite.call(this, width, height);
-        //this.image = image;
+        this.image = image;
         this.frame = 0;
+        this.x = x;
+        this.y = y;
         this.flow  = false;
         this.children = new Array;
     },
@@ -60,9 +64,9 @@ cowop.Branch = enchant.Class.create(enchant.Sprite, {
             this.children[i].update();
         }
 	if(this.flow){
-	    this.sprite.frame = [1];
+	    this.frame = [1];
 	} else {
-	    this.sprite.frame = [0];
+	    this.frame = [0];
 	}
     },
     supply: function(volume) {
@@ -73,10 +77,12 @@ cowop.Branch = enchant.Class.create(enchant.Sprite, {
 })
 
 cowop.Organ = enchant.Class.create(enchant.Sprite, {
-    initialize: function(width, height, image, capacity, consumption) {
+    initialize: function(x, y, width, height, image, capacity, consumption) {
         enchant.Sprite.call(this, width, height);
-        //this.image = image;
+        this.image = image;
         this.frame = 0;
+        this.x = x;
+        this.y = y;
         this.capacity = capacity;
         this.consumption = consumption;
         this.volume = capacity
@@ -88,6 +94,12 @@ cowop.Organ = enchant.Class.create(enchant.Sprite, {
         });
     },
     update: function() {
+        console.log("organ")
+	if(this.flow){
+	    this.frame = 0;
+	}else{
+	    this.frame = 1;
+	}
     },
     supply: function(volume) {
         this.volume += volume
@@ -103,40 +115,59 @@ cowop.Organ = enchant.Class.create(enchant.Sprite, {
 })
 
 cowop.Arteries = enchant.Class.create(enchant.Sprite, {
-    initialize: function(width, height, image) {
+    initialize: function(x, y, width, height, image, game, scene) {
         enchant.Sprite.call(this, width, height);
-        //this.image = image;
+        this.image = image;
         this.frame = 0;
+        this.x = x;
+        this.y = y;
+        scene.addChild(this);
         
-        this.aorta = cowop.Branch(30,30,null);
+        this.aorta = new cowop.Branch(x+219,y+76,133,41,game.assets["arteries_aorta.png"]);
+        scene.addChild(this.aorta);
         
-        this.leftBrachial = cowop.Junction(30,30,null);
+        this.leftBrachial = new cowop.Junction(x+340,y+93,31,30,game.assets["arteries_left_brachial.png"]);
         this.aorta.children.push(this.leftBrachial);
-        this.leftArm = cowop.Organ(30,30,null);
+        scene.addChild(this.leftBrachial);
+        this.leftArm = new cowop.Organ(x+223,y+119,117,33,game.assets["arteries_left_arm.png"]);
         this.leftBrachial.leftChild = this.leftArm;
-        this.leftBrain = cowop.Organ(30,30,null);
+        scene.addChild(this.leftArm);
+        this.leftBrain = new cowop.Organ(x+371,y+109,20,5,game.assets["arteries_left_brain.png"]);
         this.leftBrachial.rightChild = this.leftBrain;
+        scene.addChild(this.leftBrain);
         
-        this.rightBrachial = cowop.Junction(30,30,null);
+        this.rightBrachial = new cowop.Junction(x+331,y+51,32,31,game.assets["arteries_right_brachial.png"]);
         this.aorta.children.push(this.rightBrachial);
-        this.rightArm = cowop.Organ(30,30,null);
+        scene.addChild(this.rightBrachial);
+        this.rightArm = new cowop.Organ(x+214,y+26,126,25,game.assets["arteries_right_arm.png"]);
         this.rightBrachial.rightChild = this.rightArm;
-        this.rightBrain = cowop.Organ(30,30,null);
+        scene.addChild(this.rightArm);
+        this.rightBrain = new cowop.Organ(x+363,y+64,28,13,game.assets["arteries_right_brain.png"]);
         this.rightBrachial.leftChild = this.rightBrain;
+        scene.addChild(this.rightBrain);
         
-        this.leftIliac = cowop.Junction(30,30,null);
+        this.leftIliac = new cowop.Junction(x+206,y+100,30,28,game.assets["arteries_left_iliac.png"]);
         this.aorta.children.push(this.leftIliac);
-        this.leftLeg = cowop.Organ(30,30,null);
+        scene.addChild(this.leftIliac);
+        this.leftLeg = new cowop.Organ(x+22,y+118,184,27,game.assets["arteries_left_leg.png"]);
         this.leftIliac.leftChild = this.leftLeg;
-        this.stomach = cowop.Organ(30,30,null);
+        scene.addChild(this.leftLeg);
+        this.stomach = new cowop.Organ(x+236,y+116,4,4,game.assets["arteries_stomach.png"]);
         this.leftIliac.rightChild = this.stomach;
+        scene.addChild(this.stomach);
         
-        this.rightIliac = cowop.Junction(30,30,null);
+        this.rightIliac = new cowop.Junction(x+190,y+60,29,28,game.assets["arteries_right_iliac.png"]);
         this.aorta.children.push(this.rightIliac);
-        this.rightLeg = cowop.Organ(30,30,null);
+        scene.addChild(this.rightIliac);
+        this.rightLeg = new cowop.Organ(x+18,y+52,172,18,game.assets["arteries_right_leg.png"]);
         this.rightIliac.rightChild = this.rightLeg;
-        this.bladder = cowop.Organ(30,30,null);
+        scene.addChild(this.rightLeg);
+        this.bladder = new cowop.Organ(x,y,0,0);
         this.rightIliac.leftChild = this.bladder;
+        scene.addChild(this.bladder);
+
+        this.aorta.flow = true;
+        this.aorta.update();
     },
     
     supply: function(volume) {
