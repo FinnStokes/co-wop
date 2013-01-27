@@ -86,6 +86,7 @@ cowop.Organ = enchant.Class.create(enchant.Sprite, {
         this.frame = 0;
         this.x = x;
         this.y = y;
+        this.alive = true;
         this.capacity = capacity;
         this.consumption = consumption;
         this.volume = capacity
@@ -97,7 +98,7 @@ cowop.Organ = enchant.Class.create(enchant.Sprite, {
         });
     },
     update: function() {
-        console.log("organ")
+        //console.log("organ")
 	if(this.flow){
 	    this.frame = 0;
 	}else{
@@ -115,15 +116,10 @@ cowop.Organ = enchant.Class.create(enchant.Sprite, {
             return this.volume / this.capacity;
         }
     },
-    alive: {
-        get: function () {
-            return this.alive;
-        }
-    }
 })
 
 cowop.Arteries = enchant.Class.create(enchant.Sprite, {
-    initialize: function(x, y, width, height, image, game, scene) {
+    initialize: function(x, y, width, height, image, game, scene, loseScene) {
         enchant.Sprite.call(this, width, height);
         this.image = image;
         this.frame = 0;
@@ -198,6 +194,7 @@ cowop.Arteries = enchant.Class.create(enchant.Sprite, {
                 that.rightArmBar.update(that.rightArm.oxygenation);
                 that.leftBrainBar.update(that.leftBrain.oxygenation);
                 that.rightBrainBar.update(that.rightBrain.oxygenation);
+                that.update(game, loseScene)
         });
 
         this.aorta.flow = true;
@@ -209,15 +206,18 @@ cowop.Arteries = enchant.Class.create(enchant.Sprite, {
     },
 
     update: function(game, loseScene) {
-        if (this.rightBrain.alive && this.rightBrain.oxygenation < 0) {
+        if (this.rightBrain.alive && this.rightBrain.oxygenation <= 0) {
             this.rightBrain.alive = false;
             game.pushScene(loseScene);
-            alert("Right brain ran out of oxygen");
-        } else if (this.leftBrain.alive && this.leftBrain.oxygenation < 0) {
+        } else if (this.leftBrain.alive && this.leftBrain.oxygenation <= 0) {
             this.leftBrain.alive = false;
             game.pushScene(loseScene);
-            alert("Left brain ran out of oxygen");
+        } else if (this.bladder.alive && this.bladder.oxygenation <= 0) {
+            this.bladder.alive = false;
+            game.pushScene(loseScene);
+        } else if (this.stomach.alive && this.stomach.oxygenation <= 0) {
+            this.stomach.alive = false;
+            game.pushScene(loseScene);
         };
     }
-
 })
