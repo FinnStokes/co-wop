@@ -307,7 +307,7 @@ window.onload = function() {
             }
         });
         
-        var leftHip = new PhyJoint(leftThigh, torso, originX + 10, originY + 255,
+        var leftHip = new PhyJoint(leftThigh, torso, originX -16.5, originY + 255,
           -30, 135, // lowerAngle, upperAngle
           ARTY_MAX_MOTOR_TORQUE, ARTY_MOTOR_SPEED // maxMotorTorque, motorSpeed
         );
