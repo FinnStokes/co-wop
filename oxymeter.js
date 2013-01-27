@@ -8,6 +8,6 @@ cowop.OxyMeter = enchant.Class.create(enchant.Sprite, {
         this.frame = 0;
     },
     update: function(percent) {
-        this.frame = Math.floor((0.99-percent)*10)
+        this.frame = 9-Math.floor(percent*10)
     }
 });

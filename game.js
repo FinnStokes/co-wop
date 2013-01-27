@@ -29,7 +29,7 @@ window.onload = function() {
     var game = new Game(800, 600);
     game.fps = 30;
     var haveWon = false;
-    game.preload('background.png','phone.png',
+    game.preload('background.png','hud.png','phone.png',
         'ball.png','newspaper.png',
         'heart.png', 'head.png','torso.png',
         'left_foot.png', 'right_foot.png',
@@ -417,6 +417,10 @@ window.onload = function() {
                 }
             }
         });
+        
+        var hud = new enchant.Sprite(800, 600);
+        hud.image = game.assets["hud.png"];
+        scene.addChild(hud);
                 
         scene.addEventListener("enterframe", function () {
             // Update joint motors

@@ -1,5 +1,5 @@
 var ORGAN_CAPACITY = 210;
-var ORGAN_CONSUMPTION = 50;
+var ORGAN_CONSUMPTION = 20;
 
 cowop.Junction = enchant.Class.create(enchant.Sprite, {
     initialize: function(x, y, width, height, image) {
@@ -170,19 +170,19 @@ cowop.Arteries = enchant.Class.create(enchant.Sprite, {
         this.rightIliac.leftChild = this.bladder;
         scene.addChild(this.bladder);
         
-        this.leftLegBar = new cowop.OxyMeter(111,20,game.assets['bar.png'],280,20);
+        this.leftLegBar = new cowop.OxyMeter(111,20,game.assets['bar.png'],280,150);
         scene.addChild(this.leftLegBar);
-        this.rightLegBar = new cowop.OxyMeter(111,20,game.assets['bar.png'],280,150);
+        this.rightLegBar = new cowop.OxyMeter(111,20,game.assets['bar.png'],280,20);
         scene.addChild(this.rightLegBar);
         
-        this.leftArmBar = new cowop.OxyMeter(111,20,game.assets['bar.png'],480,20);
+        this.leftArmBar = new cowop.OxyMeter(111,20,game.assets['bar.png'],480,150);
         scene.addChild(this.leftArmBar);
-        this.rightArmBar = new cowop.OxyMeter(111,20,game.assets['bar.png'],480,150);
+        this.rightArmBar = new cowop.OxyMeter(111,20,game.assets['bar.png'],480,20);
         scene.addChild(this.rightArmBar);  
               
-        this.leftBrainBar = new cowop.OxyMeter(111,20,game.assets['bar.png'],620,20);
+        this.leftBrainBar = new cowop.OxyMeter(111,20,game.assets['bar.png'],620,150);
         scene.addChild(this.leftBrainBar);
-        this.rightBrainBar = new cowop.OxyMeter(111,20,game.assets['bar.png'],620,150);
+        this.rightBrainBar = new cowop.OxyMeter(111,20,game.assets['bar.png'],620,20);
         scene.addChild(this.rightBrainBar);
     
         this.bladderBar = new cowop.OxyMeter(111,20,game.assets['bar.png'],320,85);
