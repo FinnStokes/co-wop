@@ -25,9 +25,9 @@ cowop.OxyMeter = enchant.Class.create(enchant.Sprite, {
 });
 
 cowop.Heart = enchant.Class.create(enchant.Sprite, {
-    initialize: function(width, height, image, game, loseScene, oxyMeter) {
+    initialize: function(width, height, image, game, loseScene, oxyMeter, arteries) {
         enchant.Sprite.call(this, width, height);
-
+        this.aorta = arteries.aorta;
         this.image = image;
         this.frame = 0;
         this.apumping = true;
@@ -104,8 +104,10 @@ cowop.Heart = enchant.Class.create(enchant.Sprite, {
                 if (this.vvol > VENTRICLE_RATE*e.elapsed) {
                     this.vvol -= VENTRICLE_RATE*e.elapsed;
                     this.ovol += VENTRICLE_RATE*e.elapsed;
+                    this.aorta.supply(VENTRICLE_RATE*e.elapsed);
                 } else {
                     this.ovol += this.vvol;
+                    this.aorta.supply(this.vvol);
                     this.vvol = 0;
                     this.vpumping = false;
                 }

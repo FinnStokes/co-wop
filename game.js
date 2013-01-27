@@ -71,7 +71,7 @@ window.onload = function() {
         var arteries = new cowop.Arteries(250, 0, 450, 180, game.assets["arteries.png"], game, scene);
 
         var oxyMeter = new cowop.OxyMeter(111, 20, game.assets['bar.png'], 0, 155)
-        var heart = new cowop.Heart(150, 150, game.assets["heart.png"], game, loseScene, oxyMeter);
+        var heart = new cowop.Heart(150, 150, game.assets["heart.png"], game, loseScene, oxyMeter, arteries);
         scene.addChild(heart);
         scene.addChild(oxyMeter);
         
