@@ -355,6 +355,18 @@ window.onload = function() {
         });
                 
         scene.addEventListener("enterframe", function () {
+            // Update joint motors
+            var max = ARTY_MAX_MOTOR_TORQUE;
+            leftShoulder.m_joint.SetMaxMotorTorque(max*arteries.leftArm.oxygenation);
+            rightShoulder.m_joint.SetMaxMotorTorque(max*arteries.rightArm.oxygenation);
+            leftElbow.m_joint.SetMaxMotorTorque(max*arteries.leftArm.oxygenation);
+            rightElbow.m_joint.SetMaxMotorTorque(max*arteries.rightArm.oxygenation);
+            leftHip.m_joint.SetMaxMotorTorque(max*arteries.leftLeg.oxygenation);
+            rightHip.m_joint.SetMaxMotorTorque(max*arteries.rightLeg.oxygenation);
+            leftKnee.m_joint.SetMaxMotorTorque(max*arteries.leftLeg.oxygenation);
+            rightKnee.m_joint.SetMaxMotorTorque(max*arteries.rightLeg.oxygenation);
+            
+            // Update the physics simulation
             world.step(game.fps);
         });
     };
