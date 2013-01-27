@@ -11,6 +11,10 @@ var FLOOR_DENSITY = 1.0;
 var FLOOR_FRICTION = 1.0;
 var FLOOR_RESTITUTION = 1.0;
 
+var PHONE_DENSITY = 1.0;
+var PHONE_FRICTION = 1.0;
+var PHONE_RESTITUTION = 1.0;
+
 enchant();
 
 var world = new enchant.box2d.PhysicsWorld(0, 20);
@@ -18,7 +22,8 @@ var world = new enchant.box2d.PhysicsWorld(0, 20);
 window.onload = function() {
     var game = new Game(800, 600);
     game.fps = 30;
-    game.preload('heart.png', 'head.png','torso.png',
+    game.preload('phone.png',
+        'heart.png', 'head.png','torso.png',
         'left_foot.png', 'right_foot.png',
         'left_arm.png','right_arm.png',
         'left_forearm.png','right_forearm.png',
@@ -205,7 +210,7 @@ window.onload = function() {
         });
         
         var rightShoulder = new PhyJoint(rightArm, torso, originX - 27.5, originY + 115,
-          -1, 180, // lowerAngle, upperAngle
+          -45, 180, // lowerAngle, upperAngle
           ARTY_MAX_MOTOR_TORQUE, ARTY_MOTOR_SPEED // maxMotorTorque, motorSpeed
         );
         var rightShoulderClockwise = true;
@@ -221,7 +226,7 @@ window.onload = function() {
         });
         
         var leftElbow = new PhyJoint(leftForearm, leftArm, originX - 27.5, originY + 176,
-          -1, 135, // lowerAngle, upperAngle
+          -45, 135, // lowerAngle, upperAngle
           ARTY_MAX_MOTOR_TORQUE, ARTY_MOTOR_SPEED // maxMotorTorque, motorSpeed
         );
         var leftElbowExtend = true;
@@ -285,7 +290,7 @@ window.onload = function() {
         });
         
         var leftKnee = new PhyJoint(leftCalf, leftThigh, originX - 16.5, originY + 323,
-          -150, 1, // lowerAngle, upperAngle
+          -135, 1, // lowerAngle, upperAngle
           ARTY_MAX_MOTOR_TORQUE, ARTY_MOTOR_SPEED // maxMotorTorque, motorSpeed
         );
         var leftKneeExtend = true;
@@ -301,7 +306,7 @@ window.onload = function() {
         });
         
         var rightKnee = new PhyJoint(rightCalf, rightThigh, originX - 16.5, originY + 323,
-          -150, 1, // lowerAngle, upperAngle
+          -135, 1, // lowerAngle, upperAngle
           ARTY_MAX_MOTOR_TORQUE, ARTY_MOTOR_SPEED // maxMotorTorque, motorSpeed
         );
         var rightKneeExtend = true;
@@ -312,6 +317,36 @@ window.onload = function() {
                     rightKnee.m_joint.SetMotorSpeed(ARTY_MOTOR_SPEED)
                 } else {
                     rightKnee.m_joint.SetMotorSpeed(-ARTY_MOTOR_SPEED)
+                }
+            }
+        });
+        
+        // PHONE
+        var phone = new PhyBoxSprite(
+            20, 60,
+            enchant.box2d.STATIC_SPRITE,
+            PHONE_DENSITY, PHONE_FRICTION, PHONE_RESTITUTION,
+            true, 1, 2
+        );
+        phone.image = game.assets["phone.png"];
+        phone.position = { x: 250, y: 500 };
+        scene.addChild(phone);
+        var phoneInHand = false;
+        scene.addEventListener("enterframe", function () {
+            if (phoneInHand) {
+            } else {
+                var ld = Math.pow(phone.x - leftForearm.x, 2) + Math.pow(phone.y - leftForearm.y, 2)
+                var rd = Math.pow(phone.x - rightForearm.x, 2) + Math.pow(phone.y - rightForearm.y, 2)
+                if (ld < 16*16) {
+                    phoneInHand = true;
+                    phone.type = b2Body.b2_dynamicBody;
+                    phone.sleep = false;
+                    var j = new PhyJoint(phone, leftForearm, phone.x, phone.y, -1, 1);
+                } else if (rd < 16*16) {
+                    phoneInHand = true;
+                    phone.type = b2Body.b2_dynamicBody;
+                    phone.sleep = false;
+                    var j = new PhyJoint(phone, rightForearm, phone.x, phone.y, -1, 1);
                 }
             }
         });
