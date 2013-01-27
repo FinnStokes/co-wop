@@ -19,6 +19,8 @@ var PHONE_DENSITY = 1.0;
 var PHONE_FRICTION = 1.0;
 var PHONE_RESTITUTION = 1.0;
 
+var TIME_AT_HEAD_MAX = 5;
+
 enchant();
 
 var world = new enchant.box2d.PhysicsWorld(0, 20);
@@ -26,7 +28,8 @@ var world = new enchant.box2d.PhysicsWorld(0, 20);
 window.onload = function() {
     var game = new Game(800, 600);
     game.fps = 30;
-    game.preload('background.png','phone.png','ball.png',
+    var haveWon = false;
+    game.preload('phone.png','background.png','phone.png','ball.png',
         'heart.png', 'head.png','torso.png',
         'left_foot.png', 'right_foot.png',
         'left_arm.png','right_arm.png',
@@ -354,8 +357,20 @@ window.onload = function() {
         phone.position = { x: 690, y: 250 };
         scene.addChild(phone);
         var phoneInHand = false;
-        scene.addEventListener("enterframe", function () {
+        var timeAtHead = 0;
+        scene.addEventListener(enchant.Event.ENTER_FRAME, function (e) {
             if (phoneInHand) {
+                var hd = Math.pow(phone.x - head.x, 2) + Math.pow(phone.y - head.y, 2);
+                if (hd < 42.5*42.5) {
+                    timeAtHead += e.elapsed/1000;
+                } else {
+                    timeAtHead = 0;
+                };
+                if (timeAtHead > TIME_AT_HEAD_MAX && !haveWon) {
+                    alert("Phone to head for elapsed time")
+                    haveWon = true;
+                };
+                console.log(timeAtHead);
             } else {
                 var ld = Math.pow(phone.x - leftForearm.x, 2) + Math.pow(phone.y - leftForearm.y, 2)
                 var rd = Math.pow(phone.x - rightForearm.x, 2) + Math.pow(phone.y - rightForearm.y, 2)

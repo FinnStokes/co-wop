@@ -94,7 +94,7 @@ cowop.Heart = enchant.Class.create(enchant.Sprite, {
             if (!this.vpumping && this.vvol/VENTRICLE_VOLUME < this.avol/ATRIUM_VOLUME) {
                 this.vvol -= REFILL_FACTOR*e.elapsed * (VENTRICLE_VOLUME - this.avol);
             }
-            console.log(Math.floor(this.avol), Math.floor(this.vvol), Math.floor(this.ovol));
+            //console.log(Math.floor(this.avol), Math.floor(this.vvol), Math.floor(this.ovol));
         });
     },
 });
