@@ -43,6 +43,8 @@ window.onload = function() {
     game.onload = function() {
         var scene = new Scene();
         game.pushScene(scene);
+
+        var winScene = new Scene(); //This is the win scene
         
         var background = new enchant.Sprite(800, 600);
         background.image = game.assets["background.png"];
@@ -377,7 +379,7 @@ window.onload = function() {
                     timeAtHead = 0;
                 };
                 if (timeAtHead > TIME_AT_HEAD_MAX && !haveWon) {
-                    alert("Phone to head for elapsed time")
+                    pushScene(winScene);
                     haveWon = true;
                 };
                 console.log(timeAtHead);
