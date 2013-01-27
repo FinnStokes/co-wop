@@ -7,6 +7,7 @@ var REFILL_FACTOR = Math.log(1/2)/HALF_LIFE
 var OXYGEN_MAX = 500
 var OXYGEN_PER_PUMP_A = 5
 var OXYGEN_PER_PUMP_V = 30
+var OXYGEN_DECAY_PER_SEC = 2
 
 // Volume = max_volume*(1 - exp(refill_factor*time))
 
@@ -66,7 +67,7 @@ cowop.Heart = enchant.Class.create(enchant.Sprite, {
             }
         });
         this.addEventListener(enchant.Event.ENTER_FRAME, function(e) {
-            this.ovol -= e.elapsed/1000;
+            this.ovol -= e.elapsed/1000 * OXYGEN_DECAY_PER_SEC;
 
             //Kill the heart if oxygen volume <= 0
             if (this.ovol <= 0 && this.alive) {
