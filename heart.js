@@ -8,9 +8,23 @@ var OXYGEN_MAX = 500
 
 // Volume = max_volume*(1 - exp(refill_factor*time))
 
-cowop.Heart = enchant.Class.create(enchant.Sprite, {
-    initialize: function(width, height, image, game, loseScene) {
+cowop.OxyMeter = enchant.Class.create(enchant.Sprite, {
+    initialize: function(width, height, image, x, y) {
         enchant.Sprite.call(this, width, height);
+        this.image = image;
+        this.x = x;
+        this.y = y;
+        this.frame = 0;
+    },
+    update: function(percent) {
+        this.frame = 10 - Math.ceil(percent*10)
+    }
+});
+
+cowop.Heart = enchant.Class.create(enchant.Sprite, {
+    initialize: function(width, height, image, game, loseScene, oxyMeter) {
+        enchant.Sprite.call(this, width, height);
+
         this.image = image;
         this.frame = 0;
         this.apumping = true;
@@ -64,6 +78,7 @@ cowop.Heart = enchant.Class.create(enchant.Sprite, {
             }
 
             //Update the oxygen bar
+            oxyMeter.update(this.ovol/OXYGEN_MAX)
 
             this.frame = 0;
             if (this.apumping) {

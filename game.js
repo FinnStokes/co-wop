@@ -29,14 +29,16 @@ window.onload = function() {
     var game = new Game(800, 600);
     game.fps = 30;
     var haveWon = false;
-    game.preload('background.png','phone.png','ball.png','newspaper.png',
+    game.preload('background.png','phone.png',
+        'ball.png','newspaper.png',
         'heart.png', 'head.png','torso.png',
         'left_foot.png', 'right_foot.png',
         'left_arm.png','right_arm.png',
         'left_forearm.png','right_forearm.png',
         'left_thigh.png','right_thigh.png',
         'left_calf.png','right_calf.png',
-        'WinScreen.png', 'LoseScreen.png'
+        'WinScreen.png', 'LoseScreen.png',
+        'bar.png'
     );
     
     var originX = 200, originY = 100;
@@ -62,8 +64,10 @@ window.onload = function() {
         var arteries = new cowop.Arteries(150, 150,  null);
         scene.addChild(arteries);
 
-        var heart = new cowop.Heart(150, 150, game.assets["heart.png"], game, loseScene);
+        var oxyMeter = new cowop.OxyMeter(111, 20, game.assets['bar.png'], 0, 155)
+        var heart = new cowop.Heart(150, 150, game.assets["heart.png"], game, loseScene, oxyMeter);
         scene.addChild(heart);
+        scene.addChild(oxyMeter);
         
         var floor = new PhyBoxSprite(
             800, 32,
