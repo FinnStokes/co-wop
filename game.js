@@ -37,6 +37,9 @@ window.onload = function() {
         var scene = new Scene();
         game.pushScene(scene);
 
+        var arteries = new cowop.Arteries(150, 150,  null);
+        scene.addChild(arteries);
+
         var heart = new cowop.Heart(150, 150, game.assets["heart.png"]);
         scene.addChild(heart);
         
