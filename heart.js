@@ -11,19 +11,6 @@ var OXYGEN_DECAY_PER_SEC = 2
 
 // Volume = max_volume*(1 - exp(refill_factor*time))
 
-cowop.OxyMeter = enchant.Class.create(enchant.Sprite, {
-    initialize: function(width, height, image, x, y) {
-        enchant.Sprite.call(this, width, height);
-        this.image = image;
-        this.x = x;
-        this.y = y;
-        this.frame = 0;
-    },
-    update: function(percent) {
-        this.frame = 10 - Math.ceil(percent*10)
-    }
-});
-
 cowop.Heart = enchant.Class.create(enchant.Sprite, {
     initialize: function(width, height, image, game, loseScene, oxyMeter, arteries) {
         enchant.Sprite.call(this, width, height);

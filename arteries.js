@@ -173,6 +173,32 @@ cowop.Arteries = enchant.Class.create(enchant.Sprite, {
         this.bladder = new cowop.Organ(x,y,0,0,ORGAN_CAPACITY,ORGAN_CONSUMPTION);
         this.rightIliac.leftChild = this.bladder;
         scene.addChild(this.bladder);
+        
+        this.leftLegBar = new cowop.OxyMeter(111,20,game.assets['bar.png'],280,20);
+        scene.addChild(this.leftLegBar);
+        this.rightLegBar = new cowop.OxyMeter(111,20,game.assets['bar.png'],280,150);
+        scene.addChild(this.rightLegBar);
+        
+        this.leftArmBar = new cowop.OxyMeter(111,20,game.assets['bar.png'],480,20);
+        scene.addChild(this.leftArmBar);
+        this.rightArmBar = new cowop.OxyMeter(111,20,game.assets['bar.png'],480,150);
+        scene.addChild(this.rightArmBar);  
+              
+        this.leftBrainBar = new cowop.OxyMeter(111,20,game.assets['bar.png'],620,20);
+        scene.addChild(this.leftBrainBar);
+        this.rightBrainBar = new cowop.OxyMeter(111,20,game.assets['bar.png'],620,150);
+        scene.addChild(this.rightBrainBar);
+        
+        var that = this;
+        
+        scene.addEventListener(enchant.Event.ENTER_FRAME, function(){
+                that.leftLegBar.update(that.leftLeg.oxygenation);
+                that.rightLegBar.update(that.rightLeg.oxygenation);
+                that.leftArmBar.update(that.leftArm.oxygenation);
+                that.rightArmBar.update(that.rightArm.oxygenation);
+                that.leftBrainBar.update(that.leftBrain.oxygenation);
+                that.rightBrainBar.update(that.rightBrain.oxygenation);
+        });
 
         this.aorta.flow = true;
         this.aorta.update();
@@ -193,4 +219,5 @@ cowop.Arteries = enchant.Class.create(enchant.Sprite, {
             alert("Left brain ran out of oxygen");
         };
     }
+
 })
