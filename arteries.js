@@ -1,3 +1,6 @@
+var ORGAN_CAPACITY = 210;
+var ORGAN_CONSUMPTION = 50;
+
 cowop.Junction = enchant.Class.create(enchant.Sprite, {
     initialize: function(x, y, width, height, image) {
         enchant.Sprite.call(this, width, height);
@@ -129,40 +132,40 @@ cowop.Arteries = enchant.Class.create(enchant.Sprite, {
         this.leftBrachial = new cowop.Junction(x+340,y+93,31,30,game.assets["arteries_left_brachial.png"]);
         this.aorta.children.push(this.leftBrachial);
         scene.addChild(this.leftBrachial);
-        this.leftArm = new cowop.Organ(x+223,y+119,117,33,game.assets["arteries_left_arm.png"]);
+        this.leftArm = new cowop.Organ(x+223,y+119,117,33,game.assets["arteries_left_arm.png"],ORGAN_CAPACITY,ORGAN_CONSUMPTION);
         this.leftBrachial.rightChild = this.leftArm;
         scene.addChild(this.leftArm);
-        this.leftBrain = new cowop.Organ(x+371,y+109,20,5,game.assets["arteries_left_brain.png"]);
+        this.leftBrain = new cowop.Organ(x+371,y+109,20,5,game.assets["arteries_left_brain.png"],ORGAN_CAPACITY,ORGAN_CONSUMPTION);
         this.leftBrachial.leftChild = this.leftBrain;
         scene.addChild(this.leftBrain);
         
         this.rightBrachial = new cowop.Junction(x+331,y+51,32,31,game.assets["arteries_right_brachial.png"]);
         this.aorta.children.push(this.rightBrachial);
         scene.addChild(this.rightBrachial);
-        this.rightArm = new cowop.Organ(x+214,y+26,126,25,game.assets["arteries_right_arm.png"]);
+        this.rightArm = new cowop.Organ(x+214,y+26,126,25,game.assets["arteries_right_arm.png"],ORGAN_CAPACITY,ORGAN_CONSUMPTION);
         this.rightBrachial.leftChild = this.rightArm;
         scene.addChild(this.rightArm);
-        this.rightBrain = new cowop.Organ(x+363,y+64,28,13,game.assets["arteries_right_brain.png"]);
+        this.rightBrain = new cowop.Organ(x+363,y+64,28,13,game.assets["arteries_right_brain.png"],ORGAN_CAPACITY,ORGAN_CONSUMPTION);
         this.rightBrachial.rightChild = this.rightBrain;
         scene.addChild(this.rightBrain);
         
         this.leftIliac = new cowop.Junction(x+206,y+100,30,28,game.assets["arteries_left_iliac.png"]);
         this.aorta.children.push(this.leftIliac);
         scene.addChild(this.leftIliac);
-        this.leftLeg = new cowop.Organ(x+22,y+118,184,27,game.assets["arteries_left_leg.png"]);
+        this.leftLeg = new cowop.Organ(x+22,y+118,184,27,game.assets["arteries_left_leg.png"],ORGAN_CAPACITY,ORGAN_CONSUMPTION);
         this.leftIliac.rightChild = this.leftLeg;
         scene.addChild(this.leftLeg);
-        this.stomach = new cowop.Organ(x+236,y+116,4,4,game.assets["arteries_stomach.png"]);
+        this.stomach = new cowop.Organ(x+236,y+116,4,4,game.assets["arteries_stomach.png"],ORGAN_CAPACITY,ORGAN_CONSUMPTION);
         this.leftIliac.leftChild = this.stomach;
         scene.addChild(this.stomach);
         
         this.rightIliac = new cowop.Junction(x+190,y+60,29,28,game.assets["arteries_right_iliac.png"]);
         this.aorta.children.push(this.rightIliac);
         scene.addChild(this.rightIliac);
-        this.rightLeg = new cowop.Organ(x+18,y+52,172,18,game.assets["arteries_right_leg.png"]);
+        this.rightLeg = new cowop.Organ(x+18,y+52,172,18,game.assets["arteries_right_leg.png"],ORGAN_CAPACITY,ORGAN_CONSUMPTION);
         this.rightIliac.rightChild = this.rightLeg;
         scene.addChild(this.rightLeg);
-        this.bladder = new cowop.Organ(x,y,0,0);
+        this.bladder = new cowop.Organ(x,y,0,0,ORGAN_CAPACITY,ORGAN_CONSUMPTION);
         this.rightIliac.leftChild = this.bladder;
         scene.addChild(this.bladder);
 

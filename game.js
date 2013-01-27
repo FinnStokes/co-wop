@@ -401,7 +401,6 @@ window.onload = function() {
                     pushScene(winScene);
                     haveWon = true;
                 };
-                console.log(timeAtHead);
             } else {
                 var ld = Math.pow(phone.x - leftForearm.x, 2) + Math.pow(phone.y - leftForearm.y, 2)
                 var rd = Math.pow(phone.x - rightForearm.x, 2) + Math.pow(phone.y - rightForearm.y, 2)
