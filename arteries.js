@@ -178,11 +178,14 @@ cowop.Arteries = enchant.Class.create(enchant.Sprite, {
     },
 
     update: function(game, loseScene) {
-        if ((this.rightBrain.alive && this.rightBrain.oxygenation < 0) || (this.leftBrain.alive && this.leftBrain.oxygenation < 0)) {
+        if (this.rightBrain.alive && this.rightBrain.oxygenation < 0) {
             this.rightBrain.alive = false;
+            game.pushScene(loseScene);
+            alert("Right brain ran out of oxygen");
+        } else if (this.leftBrain.alive && this.leftBrain.oxygenation < 0) {
             this.leftBrain.alive = false;
             game.pushScene(loseScene);
-            alert("Brain ran out of oxygen");
-        }
+            alert("Left brain ran out of oxygen");
+        };
     }
 })
