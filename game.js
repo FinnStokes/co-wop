@@ -29,7 +29,7 @@ window.onload = function() {
     var game = new Game(800, 600);
     game.fps = 30;
     var haveWon = false;
-    game.preload('phone.png','background.png','phone.png','ball.png',
+    game.preload('background.png','phone.png','ball.png','newspaper.png',
         'heart.png', 'head.png','torso.png',
         'left_foot.png', 'right_foot.png',
         'left_arm.png','right_arm.png',
@@ -78,14 +78,24 @@ window.onload = function() {
         
         // Obstacles
         var ball = new PhyCircleSprite(
-            50,
+            100,
             enchant.box2d.DYNAMIC_SPRITE,
             OBSTACLE_DENSITY, OBSTACLE_FRICTION, OBSTACLE_RESTITUTION,
             true, 2, 3
         );
         ball.image = game.assets["ball.png"];
-        ball.position = { x: 400, y: 534 };
+        ball.position = { x: 600, y: 509 };
         scene.addChild(ball);
+        
+        var newspaper = new PhyBoxSprite(
+            100, 50,
+            enchant.box2d.DYNAMIC_SPRITE,
+            OBSTACLE_DENSITY, OBSTACLE_FRICTION, OBSTACLE_RESTITUTION,
+            true, 2, 3
+        );
+        newspaper.image = game.assets["newspaper.png"];
+        newspaper.position = { x: 300, y: 559 };
+        scene.addChild(newspaper);
         
         // Left Limbs
         var leftArm = new PhyBoxSprite(
