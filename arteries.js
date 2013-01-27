@@ -115,6 +115,11 @@ cowop.Organ = enchant.Class.create(enchant.Sprite, {
             return this.volume / this.capacity;
         }
     },
+    alive: {
+        get: function () {
+            return this.alive;
+        }
+    }
 })
 
 cowop.Arteries = enchant.Class.create(enchant.Sprite, {
