@@ -125,7 +125,7 @@ window.onload = function() {
             ARTY_DENSITY, ARTY_FRICTION, ARTY_RESTITUTION,
             true, 1, 2
         );
-        leftArm.position = { x: originX - 26.5, y: originY + 146.5 };
+        leftArm.position = { x: originX + 11, y: originY + 146.5 };
         leftArm.image = game.assets["left_arm.png"];
         scene.addChild(leftArm);
         
@@ -135,7 +135,7 @@ window.onload = function() {
             ARTY_DENSITY, ARTY_FRICTION, ARTY_RESTITUTION,
             true, 1, 2
         );
-        leftForearm.position = { x: originX -27.5, y: originY + 217.5 };
+        leftForearm.position = { x: originX +10, y: originY + 217.5 };
         leftForearm.image = game.assets["left_forearm.png"];
         scene.addChild(leftForearm);
         
@@ -249,7 +249,7 @@ window.onload = function() {
         var leftAnkle = new PhyJoint(leftCalf, leftFoot, originX + 5, originY + 388, -10, 70);
         var rightAnkle = new PhyJoint(rightCalf, rightFoot, originX - 21.5, originY + 388, -10, 70);
         
-        var leftShoulder = new PhyJoint(leftArm, torso, originX - 27.5, originY + 115,
+        var leftShoulder = new PhyJoint(leftArm, torso, originX + 10, originY + 115,
           -1, 180, // lowerAngle, upperAngle
           ARTY_MAX_MOTOR_TORQUE, ARTY_MOTOR_SPEED // maxMotorTorque, motorSpeed
         );
@@ -281,7 +281,7 @@ window.onload = function() {
             }
         });
         
-        var leftElbow = new PhyJoint(leftForearm, leftArm, originX - 27.5, originY + 176,
+        var leftElbow = new PhyJoint(leftForearm, leftArm, originX + 10, originY + 176,
           -45, 135, // lowerAngle, upperAngle
           ARTY_MAX_MOTOR_TORQUE, ARTY_MOTOR_SPEED // maxMotorTorque, motorSpeed
         );
