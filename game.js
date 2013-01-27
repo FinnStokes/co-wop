@@ -67,6 +67,10 @@ window.onload = function() {
         var background = new enchant.Sprite(800, 600);
         background.image = game.assets["background.png"];
         scene.addChild(background);
+       
+        var hud = new enchant.Sprite(800, 600);
+        hud.image = game.assets["hud.png"];
+        scene.addChild(hud);
 
         var arteries = new cowop.Arteries(250, 0, 450, 180, game.assets["arteries.png"], game, scene, loseScene);
 
@@ -74,7 +78,7 @@ window.onload = function() {
         var heart = new cowop.Heart(150, 150, game.assets["heart.png"], game, loseScene, oxyMeter, arteries);
         scene.addChild(heart);
         scene.addChild(oxyMeter);
-        
+		
         var floor = new PhyBoxSprite(
             800, 32,
             enchant.box2d.STATIC_SPRITE,
@@ -417,10 +421,6 @@ window.onload = function() {
                 }
             }
         });
-        
-        var hud = new enchant.Sprite(800, 600);
-        hud.image = game.assets["hud.png"];
-        scene.addChild(hud);
                 
         scene.addEventListener("enterframe", function () {
             // Update joint motors
