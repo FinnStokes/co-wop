@@ -58,9 +58,12 @@ cowop.Heart = enchant.Class.create(enchant.Sprite, {
                 this.alive = false;
             }
 
+            //Limit the oxygen the heart can contain
             if (this.ovol > OXYGEN_MAX) {
                 this.ovol = OXYGEN_MAX
             }
+
+            //Update the oxygen bar
 
             this.frame = 0;
             if (this.apumping) {
