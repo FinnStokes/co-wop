@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="800"
+   height="600"
+   id="svg2"
+   version="1.1"
+   inkscape:version="0.48.2 r9819"
+   sodipodi:docname="IntroScreen.svg">
+  <defs
+     id="defs4">
+    <linearGradient
+       id="linearGradient3755">
+      <stop
+         style="stop-color:#971744;stop-opacity:1;"
+         offset="0"
+         id="stop3757" />
+      <stop
+         id="stop3779"
+         offset="0.29890767"
+         style="stop-color:#e4001d;stop-opacity:1;" />
+      <stop
+         style="stop-color:#3c0006;stop-opacity:1;"
+         offset="1"
+         id="stop3759" />
+    </linearGradient>
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3755"
+       id="linearGradient3761"
+       x1="36.492855"
+       y1="561.42859"
+       x2="782.07855"
+       y2="11.428583"
+       gradientUnits="userSpaceOnUse" />
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="0.7"
+     inkscape:cx="550.44587"
+     inkscape:cy="321.72871"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     inkscape:window-width="1280"
+     inkscape:window-height="738"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1" />
+  <metadata
+     id="metadata7">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(0,-452.36218)">
+    <rect
+       style="color:#000000;fill:url(#linearGradient3761);fill-opacity:1;fill-rule:nonzero;stroke:#ffccaa;stroke-width:1.29999994999999990;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
+       id="rect2985"
+       width="842.85712"
+       height="637.14288"
+       x="-20"
+       y="-20"
+       transform="translate(0,452.36218)" />
+    <text
+       xml:space="preserve"
+       style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+       x="305.71429"
+       y="381.42856"
+       id="text3767"
+       sodipodi:linespacing="125%"
+       transform="translate(0,452.36218)"><tspan
+         sodipodi:role="line"
+         id="tspan3769" /></text>
+    <text
+       sodipodi:linespacing="125%"
+       id="text3771-4"
+       y="-193.50989"
+       x="840.38599"
+       style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+       xml:space="preserve"
+       transform="matrix(0.00946221,0.99995523,-0.99995523,0.00946221,0,0)"><tspan
+         style="font-size:144px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#ffffff;stroke:#000000;stroke-width:1;font-family:Franklin Gothic Heavy;-inkscape-font-specification:Franklin Gothic Heavy"
+         y="-193.50989"
+         x="840.38599"
+         id="tspan3773-0"
+         sodipodi:role="line" /></text>
+    <text
+       xml:space="preserve"
+       style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+       x="620"
+       y="501.42856"
+       id="text3832"
+       sodipodi:linespacing="125%"
+       transform="translate(0,452.36218)"><tspan
+         sodipodi:role="line"
+         id="tspan3834" /></text>
+    <text
+       sodipodi:linespacing="125%"
+       id="text3771"
+       y="554.63617"
+       x="128.80637"
+       style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+       xml:space="preserve"><tspan
+         style="font-size:144px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#ffffff;stroke:#000000;font-family:Franklin Gothic Heavy;-inkscape-font-specification:Franklin Gothic Heavy"
+         y="554.63617"
+         x="128.80637"
+         id="tspan3773"
+         sodipodi:role="line">CO-WOP</tspan></text>
+    <text
+       sodipodi:linespacing="125%"
+       id="text3771-1"
+       y="594.63617"
+       x="3.092078"
+       style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+       xml:space="preserve"><tspan
+         style="font-size:36px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#ffffff;stroke:#000000;font-family:Franklin Gothic Heavy;-inkscape-font-specification:Franklin Gothic Heavy"
+         y="594.63617"
+         x="3.092078"
+         id="tspan3773-7"
+         sodipodi:role="line">Artie is going about his business in the morning</tspan><tspan
+         style="font-size:36px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#ffffff;stroke:#000000;font-family:Franklin Gothic Heavy;-inkscape-font-specification:Franklin Gothic Heavy"
+         y="639.63617"
+         x="3.092078"
+         sodipodi:role="line"
+         id="tspan3851">when suddenly he is having a heart attack!</tspan><tspan
+         style="font-size:28px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#ffffff;stroke:#000000;font-family:Franklin Gothic Heavy;-inkscape-font-specification:Franklin Gothic Heavy"
+         y="684.63617"
+         x="3.092078"
+         sodipodi:role="line"
+         id="tspan3839" /><tspan
+         style="font-size:28px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#ffffff;stroke:#000000;font-family:Franklin Gothic Heavy;-inkscape-font-specification:Franklin Gothic Heavy"
+         y="723.08508"
+         x="3.092078"
+         sodipodi:role="line"
+         id="tspan3853">Four players can cooperate to help Artie beat his heart,</tspan><tspan
+         style="font-size:28px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#ffffff;stroke:#000000;font-family:Franklin Gothic Heavy;-inkscape-font-specification:Franklin Gothic Heavy"
+         y="758.08508"
+         x="3.092078"
+         sodipodi:role="line"
+         id="tspan3855">circulate blood to his organs and limbs, and move his arms</tspan><tspan
+         style="font-size:28px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#ffffff;stroke:#000000;font-family:Franklin Gothic Heavy;-inkscape-font-specification:Franklin Gothic Heavy"
+         y="793.08508"
+         x="3.092078"
+         sodipodi:role="line"
+         id="tspan3857">and legs to reach the telephone and call for help!</tspan><tspan
+         style="font-size:36px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#ffffff;stroke:#000000;font-family:Franklin Gothic Heavy;-inkscape-font-specification:Franklin Gothic Heavy"
+         y="828.08508"
+         x="3.092078"
+         sodipodi:role="line"
+         id="tspan3843" /><tspan
+         style="font-size:30px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#ffffff;stroke:#000000;font-family:Franklin Gothic Heavy;-inkscape-font-specification:Franklin Gothic Heavy"
+         y="864.72284"
+         x="3.092078"
+         sodipodi:role="line"
+         id="tspan3877">ARMS AND LEGS: One key to rotate a joints and one</tspan><tspan
+         style="font-size:30px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#ffffff;stroke:#000000;font-family:Franklin Gothic Heavy;-inkscape-font-specification:Franklin Gothic Heavy"
+         y="902.22284"
+         x="3.092078"
+         sodipodi:role="line"
+         id="tspan3885">key to extend/contract each limb.</tspan><tspan
+         style="font-size:30px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#ffffff;stroke:#000000;font-family:Franklin Gothic Heavy;-inkscape-font-specification:Franklin Gothic Heavy"
+         y="939.72284"
+         x="3.092078"
+         sodipodi:role="line"
+         id="tspan3879">HEART: One key controls the atria of the heart,</tspan><tspan
+         style="font-size:30px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#ffffff;stroke:#000000;font-family:Franklin Gothic Heavy;-inkscape-font-specification:Franklin Gothic Heavy"
+         y="977.22284"
+         x="3.092078"
+         sodipodi:role="line"
+         id="tspan3889">another the ventricles</tspan><tspan
+         style="font-size:30px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#ffffff;stroke:#000000;font-family:Franklin Gothic Heavy;-inkscape-font-specification:Franklin Gothic Heavy"
+         y="1014.7228"
+         x="3.092078"
+         sodipodi:role="line"
+         id="tspan3849">CIRCULATION: Use the mouse to control bloodflow to</tspan><tspan
+         style="font-size:30px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#ffffff;stroke:#000000;font-family:Franklin Gothic Heavy;-inkscape-font-specification:Franklin Gothic Heavy"
+         y="1052.2228"
+         x="3.092078"
+         sodipodi:role="line"
+         id="tspan3891">organs and limbs</tspan></text>
+    <flowRoot
+       xml:space="preserve"
+       id="flowRoot3859"
+       style="fill:black;stroke:none;stroke-opacity:1;stroke-width:1px;stroke-linejoin:miter;stroke-linecap:butt;fill-opacity:1;font-family:Sans;font-style:normal;font-weight:normal;font-size:40px;line-height:125%;letter-spacing:0px;word-spacing:0px"><flowRegion
+         id="flowRegion3861"><rect
+           id="rect3863"
+           width="450"
+           height="145.71428"
+           x="44.285713"
+           y="272.85715" /></flowRegion><flowPara
+         id="flowPara3865"></flowPara></flowRoot>  </g>
+</svg>
