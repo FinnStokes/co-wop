@@ -35,7 +35,8 @@ window.onload = function() {
         'left_arm.png','right_arm.png',
         'left_forearm.png','right_forearm.png',
         'left_thigh.png','right_thigh.png',
-        'left_calf.png','right_calf.png'
+        'left_calf.png','right_calf.png',
+        'WinScreen.png', 'LoseScreen.png'
     );
     
     var originX = 200, originY = 100;
@@ -45,7 +46,14 @@ window.onload = function() {
         game.pushScene(scene);
 
         var winScene = new Scene(); //This is the win scene
+        var winSprite = new enchant.Sprite(800, 600);
+        winSprite.image = game.assets["WinScreen.png"];
+        winScene.addChild(winSprite);
+        
         var loseScene = new Scene(); //This is the lose scene
+        var loseSprite = new enchant.Sprite(800, 600);
+        loseSprite.image = game.assets["LoseScreen.png"];
+        loseScene.addChild(loseSprite);
         
         var background = new enchant.Sprite(800, 600);
         background.image = game.assets["background.png"];
@@ -54,7 +62,7 @@ window.onload = function() {
         var arteries = new cowop.Arteries(150, 150,  null);
         scene.addChild(arteries);
 
-        var heart = new cowop.Heart(150, 150, game.assets["heart.png"]);
+        var heart = new cowop.Heart(150, 150, game.assets["heart.png"], game, loseScene);
         scene.addChild(heart);
         
         var floor = new PhyBoxSprite(

@@ -9,7 +9,7 @@ var OXYGEN_MAX = 500
 // Volume = max_volume*(1 - exp(refill_factor*time))
 
 cowop.Heart = enchant.Class.create(enchant.Sprite, {
-    initialize: function(width, height, image) {
+    initialize: function(width, height, image, game, loseScene) {
         enchant.Sprite.call(this, width, height);
         this.image = image;
         this.frame = 0;
@@ -54,7 +54,7 @@ cowop.Heart = enchant.Class.create(enchant.Sprite, {
 
             //Kill the heart if oxygen volume <= 0
             if (this.ovol <= 0 && this.alive) {
-                pushScene(loseScene);
+                game.pushScene(loseScene);
                 this.alive = false;
             }
 
