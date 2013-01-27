@@ -5,6 +5,8 @@ var VENTRICLE_RATE = VENTRICLE_VOLUME * 3 / 1000
 var HALF_LIFE = 125
 var REFILL_FACTOR = Math.log(1/2)/HALF_LIFE
 var OXYGEN_MAX = 500
+var OXYGEN_PER_PUMP_A = 5
+var OXYGEN_PER_PUMP_V = 30
 
 // Volume = max_volume*(1 - exp(refill_factor*time))
 
@@ -36,7 +38,7 @@ cowop.Heart = enchant.Class.create(enchant.Sprite, {
         this.pumpAtrium = function() {
             if (!this.apumping) {
                 this.apumping = true;
-                this.ovol -= 10;
+                this.ovol -= OXYGEN_PER_PUMP_A;
                 if (this.vpumping) {
                     this.frame = 3;
                 } else {
@@ -47,7 +49,7 @@ cowop.Heart = enchant.Class.create(enchant.Sprite, {
         this.pumpVentricle = function() {
             if (!this.vpumping) {
                 this.vpumping = true;
-                this.ovol -= 40;
+                this.ovol -= OXYGEN_PER_PUMP_V;
                 if (this.apumping) {
                     this.frame = 3;
                 } else {
