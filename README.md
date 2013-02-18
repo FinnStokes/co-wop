@@ -17,7 +17,7 @@ seconds to be saved!
 Controls
 --------
 
-Circulation: Mouse
-Arms: Q W E R
-Legs: V B N M
-Heart: 8 9
+ - Circulation: Mouse
+ - Arms: Q W E R
+ - Legs: V B N M
+ - Heart: 8 9
